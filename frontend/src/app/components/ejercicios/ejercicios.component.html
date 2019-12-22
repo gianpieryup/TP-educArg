@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+        <h3>Ejercicios</h3>
+
+<div class="row">
+    <div class="col-4" *ngFor="let p of posts" >
+        <div class="card" style="width: 18rem;">
+                <img src="https://i1.wp.com/www.sopitas.com/wp-content/uploads/2017/05/pepe-rana-860x581.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                   <h3>Usuario: {{ p.nombre_usuario}}  </h3>
+                  <h5 class="card-title">{{p.enunciado_ejercicio}}</h5>
+                  <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p>
+                  <div>{{p.fecha_post}}</div>
+                  <a  class="btn btn-primary" (click) = "navigate(p.id_post)">Ver mas</a>
+                </div>
+        </div>
+    </div>   
+</div>
+       
+</div>
