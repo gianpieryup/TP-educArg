@@ -73,7 +73,7 @@ app.use('/registro', registroRouter);
 app.use('/usuarios', secured,usuariosRouter);
 app.use('/posts',postsRouter);
 app.use('/compra',secured,compraRouter);
-app.use('/upload', uploadRouter);//deberia ponenr el secured para aceder al id , pero me rompe lo del front
+app.use('/upload',secured, uploadRouter);//deberia ponenr el secured para aceder al id , pero me rompe lo del front
 
 // ADMIN 
 app.use('/admin/posts', securedAdmin, postsAdminRouter);

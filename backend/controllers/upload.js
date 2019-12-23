@@ -23,15 +23,12 @@ router.post('/', upload.array('file',1) ,async(req,res,next)=> {
 
     try {
         console.log("Entro en el controler upload");
-        if(req.body.id){
-            console.log("El id del usuario, si esta logueado",req.body.id);     
-        }
         let nombre_imagen = uuid();
         console.log(req.files[0]);
 
         let obj = {
             id_curso: Number(req.body.id_curso) ,
-            id_usuario: 4,
+            id_usuario: req.id,
             enunciado_ejercicio: nombre_imagen,
             solucion: "Uknow"
         }

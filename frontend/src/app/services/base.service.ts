@@ -21,32 +21,36 @@ export class BaseService {
     let httpHeadersOptions : any  = {}
     try {
       if(this.code) {//sto le pega el upload para que pase formato mullti
+        console.log("Entro 1");
         httpHeadersOptions = {
           headers : new HttpHeaders({
-            'content-type' : 'application/json',
+           // 'content-type' : 'application/json',
             Authorization : localStorage.getItem('usuario') // token
           })
         } 
       } else {
-
-        if(localStorage.getItem('usuario')){
-          // content-type : 'application/json'
-          // Authorization : sesion
-          httpHeadersOptions = {
-            headers : new HttpHeaders({
-             'content-type' : 'application/json',
-              Authorization : localStorage.getItem('usuario') // token
-            })
-          } 
-        } else {
-          httpHeadersOptions = {
-            headers : new HttpHeaders({
-              // 'content-type' : 'application/json'
-            })
-          }
-        }
-        return httpHeadersOptions;
+              if(localStorage.getItem('usuario')){
+                console.log("Entro 2");
+                // content-type : 'application/json'
+                // Authorization : sesion
+                httpHeadersOptions = {
+                  headers : new HttpHeaders({
+                  'content-type' : 'application/json',
+                    Authorization : localStorage.getItem('usuario') // token
+                  })
+                } 
+              } else {
+                console.log("Entro 3");
+                httpHeadersOptions = {
+                  headers : new HttpHeaders({
+                    // 'content-type' : 'application/json'
+                  })
+                }
+              }
       }
+      console.log("Es lo que retorna getHttpOption",httpHeadersOptions);
+      return httpHeadersOptions;
+      
     } catch(error) {
       console.log(error);
     }
