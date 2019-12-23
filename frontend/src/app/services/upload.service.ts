@@ -10,7 +10,7 @@ export class UploadService extends BaseService {
     try {
      
       this.setEndPoint('upload');
-     // this.getHttpOptions(true);
+      this.setCode(true);
       // http://localhost:300/upload/1
       return this.post(obj);
     } catch(error) {

@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 const postModel = require('./../models/postModel');
 
@@ -32,6 +32,21 @@ router.get('/:id_post', async(req,res,next)=> {
     }
 })
 
-
+router.post('/cargar', async(req,res,next)=> {
+    try {//podria restringir aa que no pueda buscar uno pendiente| es nesesario
+        let obj = {
+            id_curso : 1 ,
+            id_usuario : 4,
+            enunciado_ejercicio : "Enunciado prueba",
+            solucion : "Uknow"
+        }
+        let post_cargado = await postModel.insertPost(obj);
+        if(post_cargado != undefined) {
+            res.json({status : 'ok', message : 'Producto dado de alta'});
+        } 
+    } catch(error) {    
+        res.status(500).json({status : 'error'});
+    }
+})
 
 module.exports = router;

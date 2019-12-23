@@ -30,15 +30,13 @@ router.post('/', upload.array('file',1) ,async(req,res,next)=> {
         console.log(req.files[0]);
 
         let obj = {
-            id_curso: req.body.id_curso,
+            id_curso: Number(req.body.id_curso) ,
             id_usuario: 4,
-            enunciado: nombre_imagen,
+            enunciado_ejercicio: nombre_imagen,
             solucion: "Uknow"
         }
-        console.log(obj);
-        
+        console.log(obj);             
         // leo archivo temporal --> escribo un nuevo archivo (con nuevo nombre dentro de una ubicacion x)
-
         //let cadena = hola/chau
         // cadena.split('/) --> ['hola','chau']
 
@@ -51,15 +49,13 @@ router.post('/', upload.array('file',1) ,async(req,res,next)=> {
                     console.log(err);
                 }
             })
-            // insertamos en la tabla.
             let post_cargado = await postModel.insertPost(obj);
-            res.json({status : 'ok', data : post_cargado});
-
+            console.log("post cargado: ",post_cargado);
+            
+            res.json({status : 'ok'});
         } else {
-            // 
             res.json({status : 'invalid'})
         }
-
         // archivo temporal --> idUnico.jpg
         // en la tabla imagenes idUnico.jpg
 
@@ -67,9 +63,6 @@ router.post('/', upload.array('file',1) ,async(req,res,next)=> {
         // fs.createWriteStream // crea 
         // tmp --> se depositan los archivos temporales
         // public/images --> productos.jpg
-
-        // 
-
     } catch(error) {
         res.status(500).send();
     }

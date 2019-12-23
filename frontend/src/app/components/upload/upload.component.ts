@@ -33,6 +33,7 @@ export class UploadComponent implements OnInit {
 
     let rta = await this.upload.postData(fd);
     console.log(rta);
+    
     this.rooter.navigate(['home']);
   }
 

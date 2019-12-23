@@ -1,5 +1,6 @@
 const pool = require('../bd');
 
+
 //Funcion multiproposito
 // 0: pendiente, 1 = confirmado , 2 rechazado 
 // ISUSS : agregar un campo opcional que sea el curso: matematica /fisica
@@ -31,9 +32,11 @@ async function getPost(idpost) {
 
 async function insertPost(obj) {
     try{
+        console.log("Ingresa al model postModel > innsertPost");
         let query = "INSERT INTO ?? set ?";
-        
+
         const rows = await pool.query(query,[process.env.TABLA_POST,obj]);
+        console.log("Cargo en la bd",rows.insertId);
         return rows.insertId;
     } catch(error) {
         throw error;

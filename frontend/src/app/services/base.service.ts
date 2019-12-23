@@ -8,14 +8,19 @@ import {Router} from '@angular/router';
 export class BaseService {
   url_server =  environment.url_server;
   endpoint = "";
-  // headersGlobal : any = {}
+  code: boolean = false;  //para que ueda cambiarlo
+
   constructor(private http : HttpClient, private router : Router) { }
 
-  getHttpOptions(code: boolean = false) {
+  setCode(code) {
+    // defina el httpHeadersOptions si es 'content-type' : 'application/json',
+    this.code = code;
+  }
 
+  getHttpOptions() {
     let httpHeadersOptions : any  = {}
     try {
-      if(code) {//sto le pega el upload para que pase formato mullti
+      if(this.code) {//sto le pega el upload para que pase formato mullti
         httpHeadersOptions = {
           headers : new HttpHeaders({
             'content-type' : 'application/json',
@@ -29,7 +34,7 @@ export class BaseService {
           // Authorization : sesion
           httpHeadersOptions = {
             headers : new HttpHeaders({
-            //  'content-type' : 'application/json',//aca Por que cuando esa logueado tiene que pasar muliformato
+             'content-type' : 'application/json',
               Authorization : localStorage.getItem('usuario') // token
             })
           } 
