@@ -26,18 +26,22 @@ router.put('/changepassword/:id', async(req,res,next)=> {
 })*/
 
 
-
+//Este es el que uso , el id lo saca del JWT(por que estoy logueado)
 router.get('/', async(req,res,next)=> {
     try {
         //en el JWT esta el {id : "el id del usuario logueado"}
         let usr_data = await usuariosModel.getUsuario(req.id);
-        res.json({status : 'ok', data : usr_data});
+        if(usr_data.length > 0) {
+            res.json({ status : 'ok', data : usr_data[0]});
+        } else {
+            res.json({ status : 'ok', data : "usuario no valido"} );
+        }
     } catch (error) {
         res.status(500).json({status : 'error'});
     }
 })
 
-//Usuario especifico
+//Usuario especifico//para el admin solamente-------------------
 router.get('/:id_user', async(req,res,next)=> {
     try {
         let user = await usuariosModel.getUsuario( req.params.id_user);

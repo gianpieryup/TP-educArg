@@ -22,17 +22,21 @@ const postModel = require('./../models/postModel');
 router.post('/', upload.array('file',1) ,async(req,res,next)=> {
 
     try {
-        console.log("Entro en el controler upload");
-        let nombre_imagen = uuid();
-        console.log(req.files[0]);
+        let nombre_imagen = req.files[0].filename;
+        let sol = req.files[0].path;
+        console.log("Linea 27 :",req.files[0]);
+        //El path es la ruta donde se guarda, en este caso se guardaron en la ruta "path"
+        console.log("El path de la imagen: ", sol);
 
         let obj = {
             id_curso: Number(req.body.id_curso) ,
             id_usuario: req.id,
             enunciado_ejercicio: nombre_imagen,
-            solucion: "Uknow"
+            solucion: sol
         }
-        console.log(obj);             
+        console.log(obj);   
+       
+                  
         // leo archivo temporal --> escribo un nuevo archivo (con nuevo nombre dentro de una ubicacion x)
         //let cadena = hola/chau
         // cadena.split('/) --> ['hola','chau']

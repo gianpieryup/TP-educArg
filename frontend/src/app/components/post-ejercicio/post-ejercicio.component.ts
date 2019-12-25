@@ -24,6 +24,7 @@ export class PostEjercicioComponent implements OnInit {
     if(respuesta_server.status === 'ok') {
       this.post = respuesta_server.data;//Yo le cambie a que bote un elemento y no unna lista en el backedn
       console.log(this.post);
+      console.log(this.post.solucion);
       
     }    
     

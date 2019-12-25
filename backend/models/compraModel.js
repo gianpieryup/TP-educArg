@@ -22,7 +22,11 @@ async function comprar(idUsuario,idPots) {
         correoDelUsuario = correoDelUsuario[0].mail_usuario;
         console.log(correoDelUsuario)
 
-    //-------------------------------------------------
+        //--  Actualizar la cant de salvavidas del usuario(escalable a una cantidad) -------------
+        let queryUsuario = "update usuarios set salvavidas = salvavidas - 1 where id_usuario = ? ";
+        var userActualizado = await pool.query(queryUsuario,idUsuario);
+        //---------------------------------------------------------------------------------
+
     let insertId = rowsInsert.insertId
     console.log(rowsInsert.insertId);//la pk de la fila insertada
   

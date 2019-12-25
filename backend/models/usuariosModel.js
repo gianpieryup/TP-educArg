@@ -3,7 +3,7 @@ const md5 = require('md5');
 
 async function getUsuario(id) {
     try {
-        let query = "select nombre_usuario, telefono_usuario, mail_usuario from ?? where id_usuario = ?";
+        let query = "select nombre_usuario, telefono_usuario, mail_usuario, salvavidas from ?? where id_usuario = ?";
         const rows = await pool.query(query,[process.env.TABLA_USUARIOS,id]);
         return rows; 
     } catch (error) {
