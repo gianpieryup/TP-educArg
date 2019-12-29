@@ -38,7 +38,7 @@ export class UsuariosService extends BaseService{
     }
   }
 
-  //Cambiar contraseña no implemenrado
+  //Cambiar contraseña 
   async putPassword(obj) {
     this.setEndPoint('usuarios/changepassword');
     return this.put(obj);

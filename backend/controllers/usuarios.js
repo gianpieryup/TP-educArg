@@ -3,9 +3,9 @@ const router = express.Router();
 const usuariosModel = require('../models/usuariosModel');
 const compraModel = require('../models/compraModel')
 
-/*router.put('/changedatos/:id', async(req,res,next)=> {
+router.put('/changedatos/:id', async(req,res,next)=> {
     try {
-        let actualizar_data = await usuariosModel.putUsuarioDatos(req.body.nombre_usuario, req.body.apellido_usuario, req.body.telefono_usuario,req.id);
+        let actualizar_data = await usuariosModel.putUsuarioDatos(req.body.nombre_usuario, req.body.telefono_usuario,req.id);
         res.json({status : 'ok'})
     } catch(error) {
         console.log(error);
@@ -23,7 +23,7 @@ router.put('/changepassword/:id', async(req,res,next)=> {
         console.log(error);
         res.status(500).json({status : 'error'});
     }
-})*/
+})
 
 
 //Este es el que uso , el id lo saca del JWT(por que estoy logueado)

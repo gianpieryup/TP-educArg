@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { EjerciciosComponent } from './components/ejercicios/ejercicios.component';
 import { PostEjercicioComponent } from './components/post-ejercicio/post-ejercicio.component';
+import { PendientesComponent } from './components/pendientes/pendientes.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PostEjercicioComponent } from './components/post-ejercicio/post-ejercic
     UploadComponent,
     EjerciciosComponent,
     PostEjercicioComponent,
+    PendientesComponent,
   ],
   imports: [
     BrowserModule,

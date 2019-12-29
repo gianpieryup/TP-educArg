@@ -57,7 +57,7 @@ securedAdmin = (req,res,next) => {
     const publicKey = fs.readFileSync('./claves/publica.pem');
     var decodedAdmin = jwt.verify(token, publicKey);
     console.log(decodedAdmin);  
-    req.id_cliente = decodedAdmin.id;
+    req.id = decodedAdmin.id;
     req.role = decodedAdmin.role;
     next();
   } catch (error) {

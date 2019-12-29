@@ -24,9 +24,27 @@ export class PostsService extends BaseService {
     } catch (error) {
       throw error; 
     }
-    
+  }
+  
+  //------------  Admin  -----------------------------
+  async getPostsPendientes() {
+    // /productos
+    try {
+      this.setEndPoint('admin/posts/pendientes');
+      return this.get();
+    } catch(error) {
+      throw error;
+    }
   }
 
-
+  async actualizarEstadoPost(id_post,obj) {
+    // /productos
+    try {
+      this.setEndPoint('admin/posts/' + id_post);
+      return this.put(obj);
+    } catch(error) {
+      throw error;
+    }
+  }
 
 }

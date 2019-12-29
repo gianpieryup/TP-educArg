@@ -18,15 +18,16 @@ router.post('/login',async(req,res,next)=> {
                 expiresIn : "2h",
                 algorithm : "RS256"
             }
-            
+            let permisos = 0;
             if(login_usr[0].permisos_usuario == 0){
                 // usuario comun de la plataforma
                 var payload = {id : login_usr[0].id_usuario, role : 'user'};
             } else {
                 // administrador|seria (1)
                 var payload = {id : login_usr[0].id_usuario, role : 'admin'};
+                permisos = 1;
             }
-            const usuario = {id : login_usr[0].id_usuario, nombre : login_usr[0].nombre_usuario};
+            const usuario = {id : login_usr[0].id_usuario, nombre : login_usr[0].nombre_usuario,role : permisos};
             const token = jwt.sign(payload,privateKey,signOptions);
             res.json({usuario, JWT : token});
         } else {

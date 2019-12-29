@@ -36,9 +36,11 @@ export class PerfilComponent implements OnInit {
     }
     this.form = new FormGroup({
       'nombre_usuario' : new FormControl(data.data[0].nombre_usuario, [Validators.required]),
-      'apellido_usuario' : new FormControl(data.data[0].apellido_usuario, [Validators.required]),
       'telefono_usuario' : new FormControl(data.data[0].telefono_usuario, [Validators.required])
     })
+    //cargar los ejercicios comprados
+      //Tengo ya una ruta para hacerlo
+    //(Opcional: cargar los ejercicios publicados)
   }
 
   async putUsuario(){

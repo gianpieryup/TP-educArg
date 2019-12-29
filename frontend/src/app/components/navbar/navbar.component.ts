@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  admin : boolean = false;
   login : boolean;
   nombre : string = '';
   constructor(private router : Router) { }
@@ -15,6 +16,9 @@ export class NavbarComponent implements OnInit {
     if(localStorage.getItem('usuario') != null) {
       this.nombre = localStorage.getItem('nombre');//si cambio el nombre esto se rompe habria que cambiarlo tambien
       this.login = true;
+        if(localStorage.getItem('permiso') == '1'){
+          this.admin =true;
+        }
     } else {
       this.login = false;
     }

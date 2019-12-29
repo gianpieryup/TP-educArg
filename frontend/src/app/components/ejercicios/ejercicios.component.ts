@@ -9,6 +9,7 @@ import { PostsService } from 'src/app/services/posts.service';
 })
 export class EjerciciosComponent implements OnInit {
   posts : any [] = [];
+  admin : boolean = false;//para saber si es admin o no
   constructor(private postsService : PostsService,private rooter : Router) { }
 
   async ngOnInit() {

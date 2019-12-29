@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
     if(usr_ok.status != 'invalid') {
       console.log(usr_ok);
       console.log(usr_ok.usuario.nombre);
-      localStorage.setItem('usuario',usr_ok.JWT);//'Bearer '+
-      localStorage.setItem('nombre', usr_ok.usuario.nombre)
+      localStorage.setItem('usuario',usr_ok.JWT);
+      localStorage.setItem('nombre', usr_ok.usuario.nombre);
+      localStorage.setItem('permiso', usr_ok.usuario.role)
       // console.log("Se guardo el token en el storage?");
       // console.log(localStorage.getItem('usuario'));
       // localStorage.clear();
