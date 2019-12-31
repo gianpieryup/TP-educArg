@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EjerciciosComponent } from './components/ejercicios/ejercicios.component';
 import { PostEjercicioComponent } from './components/post-ejercicio/post-ejercicio.component';
 import { PendientesComponent } from './components/pendientes/pendientes.component';
+import { ComprarComponent } from './components/comprar/comprar.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path : 'perfil', component : PerfilComponent},
   {path : 'upload', component : UploadComponent},
   {path : 'pendientes', component : PendientesComponent},
+  {path : 'comprar', component : ComprarComponent},
  // {path : 'lazy', loadChildren : './components/lazy/lazy.module#LazyModule', canActivate : [AuthGuard]},  
   {path : '**', redirectTo : 'home'}
   

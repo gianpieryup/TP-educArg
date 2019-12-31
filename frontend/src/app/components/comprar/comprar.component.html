@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="compras">
+    <div class="cinco">
+        <div class="numero">5</div>
+        <div class="bot-text">ejercicios <br> x 100$ pesos</div>
+        <div class="btn btn-outline-success botom-comprar" (click)="open(Modal,5)">Comprar</div>
+    </div>
+    <div class="veinte">
+        <div class="numero">20</div>
+        <div class="bot-text">ejercicios  <br> x 400$ pesos</div>
+        <div class="btn btn-outline-success botom-comprar" (click) = "open(Modal,20)">Comprar</div>
+    </div>
+    <div class="cien">
+        <div class="numero">100</div>
+        <div class="bot-text">ejercicios  <br> x 2000$ pesos</div>
+        <div class="btn btn-outline-success botom-comprar" (click) = "open(Modal,100)">Comprar</div>
+    </div>
+</div>
+
+
+<modal #Modal>
+    <modal-content>
+       Esta seguro que desea realizar la compra de {{cantidad}} ejercicios por el valor de  {{cantidad * 20}}$ pesos argentinos.
+       <br> Una vez realizada esta operacion, no se admiten devoluciones.
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-outline-primary">Comprar</button>
+    </modal-footer>
+</modal>

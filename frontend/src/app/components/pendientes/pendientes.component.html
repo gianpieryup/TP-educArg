@@ -13,10 +13,10 @@
                 <div class="card-body">
                    <h3>Usuario: {{ p.nombre_usuario}}  </h3>
                   <h5 class="card-title">{{p.enunciado_ejercicio}}</h5>
-                  <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p>
+                  <!-- <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p> -->
                   <div>{{p.fecha_post}}</div>
-                  <a  class="btn btn-primary" (click) = "aceptar(p.id_post)">Aceptar</a>
-                  <a  class="btn btn-primary" (click) = "denegar(p.id_post)">Denegar</a>
+                  <a  class="btn btn-outline-success" (click) = "aceptar(p.id_post)">Aceptar</a>
+                  <a  class="btn btn-outline-danger" (click) = "denegar(p.id_post)">Denegar</a>
                 </div>
         </div>
     </div>   
