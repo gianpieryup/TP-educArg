@@ -1,0 +1,32 @@
+.main{
+  /*  background-color: aqua;*/
+    padding: 15px 10px;
+}
+
+/*.main:hover {
+    background-color: blueviolet;
+}*/
+
+.problematica{
+    background-color: rgb(140, 255, 136);
+    padding: 10px;
+}
+
+.respuesta{
+    background-color: aqua;
+    padding: 10px;
+}
+
+.meme{
+    display: block;
+    width: 375px;
+    height: 250px;
+    padding: 15px 5px ;
+}
+.bien:hover {
+    background-color: rgb(70, 247, 70);
+}
+.mal:hover {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
