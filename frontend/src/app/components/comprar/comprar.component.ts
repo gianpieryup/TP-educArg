@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalManager } from 'ngb-modal';
+import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { ModalManager } from 'ngb-modal';
 export class ComprarComponent implements OnInit {
   modalR : any;
   cantidad : number;
-  constructor(private modalServices : ModalManager) { }
+  constructor(private modalServices : ModalManager,private rooter : Router,private usuariosService : UsuariosService) { }
 
   ngOnInit() {
   }
@@ -22,5 +24,11 @@ export class ComprarComponent implements OnInit {
     this.modalR = this.modalServices.open(mod);
     console.log(this.cantidad);
     
+  }
+  async comprar(){
+    let obj =  {cant: this.cantidad}
+    let actualizar_salva = await this.usuariosService.putSalvavidas(obj);
+    console.log(actualizar_salva);   
+    this.rooter.navigate(['perfil']);
   }
 }

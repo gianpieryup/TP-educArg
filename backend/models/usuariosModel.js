@@ -33,4 +33,14 @@ async function putUsuarioPassword(password, id) {
     }
 }
 
-module.exports = {getUsuario, putUsuarioDatos,putUsuarioPassword}
+async function putUsuarioSalvavidas(cant, id) {
+    try{ 
+
+        let query = "update usuarios set salvavidas = salvavidas + ? where id_usuario = ?";
+        const rows = await pool.query(query,[cant,id])
+        return rows;
+    } catch(error) {
+        throw error;
+    }
+}
+module.exports = {getUsuario, putUsuarioDatos,putUsuarioPassword,putUsuarioSalvavidas}
