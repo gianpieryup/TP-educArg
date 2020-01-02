@@ -16,15 +16,17 @@
         <div class="bot-text">ejercicios  <br> x 2000$ pesos</div>
         <div class="btn btn-outline-success botom-comprar" (click) = "open(Modal,100)">Comprar</div>
     </div>
+
+    <modal #Modal>
+        <modal-header>Detalles de la compra</modal-header>
+        <modal-content>
+           Esta seguro que desea realizar la compra de {{cantidad}} ejercicios por el valor de  {{cantidad * 20}}$ pesos argentinos.
+           <br> Una vez realizada esta operacion, no se admiten devoluciones.
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-outline-primary" (click)="comprar()">Comprar</button>
+        </modal-footer>
+    </modal>
 </div>
 
 
-<modal #Modal>
-    <modal-content>
-       Esta seguro que desea realizar la compra de {{cantidad}} ejercicios por el valor de  {{cantidad * 20}}$ pesos argentinos.
-       <br> Una vez realizada esta operacion, no se admiten devoluciones.
-    </modal-content>
-    <modal-footer>
-        <button class="btn btn-outline-primary" (click)="comprar()">Comprar</button>
-    </modal-footer>
-</modal>

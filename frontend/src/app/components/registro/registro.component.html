@@ -1,8 +1,9 @@
-<p>componente</p>
+<app-navbar></app-navbar>
 
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-4">
+            <div class="text-login">Ingrese sus Datos</div>   
             <form [formGroup] ="form" (ngSubmit)="registrar()" >
                     <div class="form-group">
                         <input type="text" class="form-control" name="nombre" formControlName="nombre"  placeholder="nombre">

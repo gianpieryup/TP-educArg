@@ -29,6 +29,7 @@ export class ComprarComponent implements OnInit {
     let obj =  {cant: this.cantidad}
     let actualizar_salva = await this.usuariosService.putSalvavidas(obj);
     console.log(actualizar_salva);   
-    this.rooter.navigate(['perfil']);
+    this.modalServices.close(this.modalR);//Habia que cerrarlo si no, se te pone negro todo
+   // this.rooter.navigate(['home']);
   }
 }

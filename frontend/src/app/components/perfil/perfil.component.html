@@ -1,7 +1,9 @@
-<!-- nombre, telefono, apellido, contraseña -->
+<app-navbar></app-navbar>
+
 <div class="container">
     <div class="row">
-        <div class="col-8">
+        <div class="col-4">
+            <div class="text-login">Edite sus Datos</div>   
             <form [formGroup]="form" (ngSubmit)="putUsuario()" *ngIf="show_form">
                 <span>Nombre : </span>
                 <div class="form-group">
@@ -15,6 +17,7 @@
 
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>
+            <br><br>
             <button type="button" (click)="showPassword()" class="btn btn-warning">Cambiar contraseña</button>
 
             <form [formGroup]="password" *ngIf="habilitar_password" (ngSubmit)="cambiarPassword()">

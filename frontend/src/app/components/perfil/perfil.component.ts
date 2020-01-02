@@ -1,6 +1,8 @@
 import { UsuariosService } from './../../services/usuarios.service';
 import { FormGroup , FormControl, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -24,7 +26,7 @@ export class PerfilComponent implements OnInit {
     console.log(actualizar_pwd);
   }
 
-  constructor(private usuariosService : UsuariosService) { }
+  constructor(private usuariosService : UsuariosService, private rooter : Router) { }
 
   async ngOnInit() {
     let data : any = await this.usuariosService.getUsuario();
@@ -35,8 +37,8 @@ export class PerfilComponent implements OnInit {
       this.show_form = false;
     }
     this.form = new FormGroup({
-      'nombre_usuario' : new FormControl(data.data[0].nombre_usuario, [Validators.required]),
-      'telefono_usuario' : new FormControl(data.data[0].telefono_usuario, [Validators.required])
+      'nombre_usuario' : new FormControl(data.data.nombre_usuario, [Validators.required]),
+      'telefono_usuario' : new FormControl(data.data.telefono_usuario, [Validators.required])
     })
     //cargar los ejercicios comprados
       //Tengo ya una ruta para hacerlo
@@ -46,6 +48,9 @@ export class PerfilComponent implements OnInit {
   async putUsuario(){
     let actualizar_datos = await this.usuariosService.putDatos(this.form.value);
     console.log(actualizar_datos);
+    console.log("Nombre de Usuario",this.form.value.nombre_usuario);
+    localStorage.setItem('nombre', this.form.value.nombre_usuario);
+    this.rooter.navigate(['home']);
   }
 
 

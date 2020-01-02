@@ -3,7 +3,7 @@ const router = express.Router();
 const usuariosModel = require('../models/usuariosModel');
 const compraModel = require('../models/compraModel')
 
-router.put('/changedatos/:id', async(req,res,next)=> {
+router.put('/changedatos', async(req,res,next)=> {
     try {
         let actualizar_data = await usuariosModel.putUsuarioDatos(req.body.nombre_usuario, req.body.telefono_usuario,req.id);
         res.json({status : 'ok', data : actualizar_data})
