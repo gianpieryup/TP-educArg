@@ -2,19 +2,25 @@
   /*  background-color: aqua;*/
     padding: 15px 10px;
 }
-
-/*.main:hover {
-    background-color: blueviolet;
-}*/
+.subtitulo{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
 
 .problematica{
     background-color: rgb(153, 250, 150);
     padding: 10px;
-}
 
+}
 .respuesta{
     background-color: rgb(170, 252, 252);
     padding: 10px;
+}
+.proposito{
+       
+    padding: 10px;
+    padding-bottom: 50px;
 }
 
 .meme{
@@ -24,7 +30,8 @@
     padding: 15px 5px ;
 }
 .bien:hover {
-    background-color: rgb(70, 247, 70);
+    background-color: rgb(4, 0, 255);
+    color: white;
 }
 .mal:hover {
     background-color: rgb(255, 0, 0);

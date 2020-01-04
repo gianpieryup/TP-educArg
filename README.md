@@ -1,5 +1,17 @@
 # educArg
 
+### Pendientes
+- Loguearse (OK)
+- Registrarse (Revisar)
+- Perfil: Editar info (OK) | Cambiar contraseña (Pendiente)
+- Comprar Salvavidas (OK)
+- El usuario debe poder comprar la solucion de un ejercicio (Revisar) | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente @Como hagarro el error 404@)
+- El usuario no debe comprar dos veces el mismo ejercicio si lo compro desabiliar el botom de comprar y cargar la solucion:
+Posible solucion:: Si estoy logueado en el onInit() del componte postejercicio 
+if(loguado){cargar de la tabla intermedia si tengo el ejercicio(req.id, req.param.id_post)}
+
+
+
 ### Actualizar el `.apib`
 aglio -i documentation.apib -o documentation.html
 
