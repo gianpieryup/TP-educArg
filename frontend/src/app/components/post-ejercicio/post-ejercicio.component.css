@@ -1,0 +1,26 @@
+.ejercicio{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+img{
+    display: block;
+    width: 600px;
+    height: 400px;
+    border: 2px solid gray;
+}
+.text-post{
+    height: 404px;
+    border-left: 2px solid gray; 
+    margin-left: 80px;
+    padding-left: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+   /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;*/
+}
+.info{
+    padding: 20px 0;
+}

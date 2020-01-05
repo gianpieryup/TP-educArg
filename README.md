@@ -2,7 +2,7 @@
 
 ### Pendientes
 - Loguearse (OK)
-- Registrarse (Revisar)
+- Registrarse  (OK)
 - Perfil: Editar info (OK) | Cambiar contraseña (Pendiente)
 - Comprar Salvavidas (OK)
 - El usuario debe poder comprar la solucion de un ejercicio (Revisar) | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente @Como hagarro el error 404@)

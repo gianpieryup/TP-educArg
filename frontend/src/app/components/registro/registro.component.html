@@ -20,8 +20,12 @@
                             <input type="text" class="form-control" name="password" formControlName="password" placeholder="password">
                     </div>  
 
-                    <button type="submit" class="btn btn-outline-success">Registrate</button>
+                    <button type="submit" class="btn btn-outline-success">Registrate</button>                   
             </form>
         </div>
+        <br>
+        <div class="text-danger" *ngIf="temporal">Por favor espere 3 segundos la carga de datos</div>
     </div>
+
+
 </div>
