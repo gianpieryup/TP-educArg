@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-01-2020 a las 01:06:18
+-- Tiempo de generación: 08-01-2020 a las 02:21:24
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -54,8 +54,6 @@ CREATE TABLE `posts` (
   `enunciado_ejercicio` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `solucion` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_usuario_solucion` int(11) DEFAULT NULL,
-  `likes` int(11) NOT NULL DEFAULT '0',
-  `dislikes` int(11) NOT NULL DEFAULT '0',
   `fecha_post` datetime DEFAULT CURRENT_TIMESTAMP,
   `estado` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

@@ -11,7 +11,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class PostEjercicioComponent implements OnInit {
   id_post : any;
   post: any = 0;
-
+  url : string = "http://localhost:3000/uploads/";
   constructor(private postsService :PostsService, private activateRouter :ActivatedRoute ,private router :Router, private usuariosService : UsuariosService) { }
 
    async ngOnInit() {
@@ -23,6 +23,9 @@ export class PostEjercicioComponent implements OnInit {
     let respuesta_server : any = await this.postsService.getPost(this.id_post); 
     if(respuesta_server.status === 'ok') {
       this.post = respuesta_server.data;//Yo le cambie a que bote un elemento y no unna lista en el backedn
+      this.url = this.url + this.post.enunciado_ejercicio ;
+      console.log("El URL: ",this.url);
+      
       console.log(this.post);
       console.log(this.post.solucion);
       

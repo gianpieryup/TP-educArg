@@ -6,7 +6,7 @@ const pool = require('../bd');
 // ISUSS : agregar un campo opcional que sea el curso: matematica /fisica
 async function getAllPost(estado) {
     try{
-        let query = "SELECT id_post ,u.nombre_usuario, enunciado_ejercicio , likes , dislikes, fecha_post FROM posts p JOIN usuarios u on (p.id_usuario = u.id_usuario) where estado = ?";
+        let query = "SELECT id_post ,u.nombre_usuario, enunciado_ejercicio , fecha_post FROM posts p JOIN usuarios u on (p.id_usuario = u.id_usuario) where estado = ?";
         const rows = await pool.query(query,estado);
         console.log(rows);
         
@@ -19,7 +19,7 @@ async function getAllPost(estado) {
 
 async function getPost(idpost) {
     try{
-        let query = "SELECT u.nombre_usuario, enunciado_ejercicio,solucion , likes , dislikes, fecha_post FROM posts p JOIN usuarios u on (p.id_usuario = u.id_usuario) where id_post = ?";
+        let query = "SELECT u.nombre_usuario, enunciado_ejercicio,solucion , fecha_post FROM posts p JOIN usuarios u on (p.id_usuario = u.id_usuario) where id_post = ?";
         const rows = await pool.query(query,idpost);
         console.log(rows);
         

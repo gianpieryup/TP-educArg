@@ -9,17 +9,19 @@ const cors = require('cors');
 
 dotenv.config();
 const fs = require('fs');
-const productosRouter = require('./controllers/productos');
 const authRouter = require('./controllers/auth');
 const registroRouter = require('./controllers/registro');
-const contenidoRouter = require('./controllers/contenido');
-const carritoRouter = require('./controllers/carrito');
+const usuariosRouter = require('./controllers/usuarios');
+const postsRouter = require('./controllers/posts');
 const compraRouter = require('./controllers/compra');
+
+const uploadRouter = require('./controllers/upload');
+
 // Admin controller
-const authAdminRouter = require('./controllers/admin/auth');
-const mainAdminRouter = require('./controllers/admin/main');
-const contenidoAdminRouter = require('./controllers/admin/contenido');
-const productosAdminRouter = require('./controllers/admin/productos');
+const postsAdminRouter = require('./controllers/admin/posts');
+const usuariosAdminRouter = require('./controllers/admin/usuarios');
+
+
 var app = express();
 app.use(cors())
 // view engine setup
@@ -55,7 +57,7 @@ securedAdmin = (req,res,next) => {
     const publicKey = fs.readFileSync('./claves/publica.pem');
     var decodedAdmin = jwt.verify(token, publicKey);
     console.log(decodedAdmin);  
-    req.id_cliente = decodedAdmin.id;
+    req.id = decodedAdmin.id;
     req.role = decodedAdmin.role;
     next();
   } catch (error) {
@@ -65,28 +67,28 @@ securedAdmin = (req,res,next) => {
   }
 
 
-
-app.use('/productos', productosRouter);
+// USER
 app.use('/auth', authRouter);
 app.use('/registro', registroRouter);
-app.use('/contenido', contenidoRouter); // ruta para ver posteos que se hagan dentro de la plataforma
-app.use('/carrito', secured, carritoRouter); // ruta protegida para que un usuario pueda ver todos los productos que tiene reservados
-app.use('/compra', secured, compraRouter);
-// ADMIN 
+app.use('/usuarios', secured,usuariosRouter);
+app.use('/posts',postsRouter);
+app.use('/compra',secured,compraRouter);
+app.use('/upload',secured, uploadRouter);//deberia ponenr el secured para aceder al id , pero me rompe lo del front | 	quite el secured
 
-app.use('/admin/auth', authAdminRouter);
-app.use('/admin/main', securedAdmin,mainAdminRouter);
-app.use('/admin/contenido', securedAdmin, contenidoAdminRouter);
-app.use('/admin/productos', securedAdmin, productosAdminRouter);
+// ADMIN 
+app.use('/admin/posts', securedAdmin, postsAdminRouter);
+app.use('/admin/usuarios', securedAdmin, usuariosAdminRouter);
+
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err);
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+
 });
 
 module.exports = app ;

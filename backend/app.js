@@ -66,6 +66,9 @@ securedAdmin = (req,res,next) => {
   }
   }
 
+// PATH
+// this folders for this application will be used to store public file images
+app.use('/uploads', express.static(path.resolve('uploads')));
 
 // USER
 app.use('/auth', authRouter);
@@ -73,7 +76,7 @@ app.use('/registro', registroRouter);
 app.use('/usuarios', secured,usuariosRouter);
 app.use('/posts',postsRouter);
 app.use('/compra',secured,compraRouter);
-app.use('/upload',secured, uploadRouter);//deberia ponenr el secured para aceder al id , pero me rompe lo del front
+app.use('/upload',secured, uploadRouter);//deberia ponenr el secured para aceder al id , pero me rompe lo del front | 	quite el secured
 
 // ADMIN 
 app.use('/admin/posts', securedAdmin, postsAdminRouter);

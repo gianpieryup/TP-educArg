@@ -4,7 +4,8 @@
     <h3>Vista individual del producto</h3>
 
     <div class="ejercicio">
-        <img src="../assets/img/pob3.png" class="post">
+        <img [src]="url"   class="post" >
+        <!-- <img src="../assets/img/pob3.png" class="post"> -->
         <div class="text-post">
             <div class="info">Id : 789</div>
             <div class="info">Autor : {{ post.nombre_usuario }}</div>
@@ -12,7 +13,5 @@
         </div>
     </div>
     <a  class="btn btn-outline-success">Comprar solucion</a>
-
-<!-- <img [src]="'http://localhost:3000/' + post.solucion + '.png'"   class="card-img-top" > -->
 
 </div>

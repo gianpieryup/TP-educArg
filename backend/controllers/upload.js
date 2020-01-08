@@ -50,6 +50,8 @@ router.post('/', upload.array('file',1) ,async(req,res,next)=> {
                     console.log(err);
                 }
             })
+            
+            obj.enunciado_ejercicio = nombre_imagen + ext;
             let post_cargado = await postModel.insertPost(obj);
             console.log("post cargado: ",post_cargado);
             
