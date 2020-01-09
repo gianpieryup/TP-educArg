@@ -30,5 +30,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['home'])
     // location.reload();
   }
+  filtrar(){
+    console.log("Persiono el botom Buscar en el Navbar");
+    console.log("El post buscado es:  ");
+  }
 
 }
