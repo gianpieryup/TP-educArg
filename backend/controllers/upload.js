@@ -6,55 +6,84 @@ const fs = require('fs');
 const uuid = require('uuid');
 
 const postModel = require('./../models/postModel');
+const solucionesModel = require('../models/solucionesModel');
 
 // multer : Destino --> genera un archivo temporal
 // Identificamos el archivo, lo copiamos a la carpeta (Leer(temporal) -->(escribir este contenido dentro de la carpeta))
 // borramos el archivo temporal
 // Insertamos el valor del archivo (nombre) en la tabla
 
-// {nombre_producto, descripcion_producto, foto_producto = uuid, visibilidad_producto, precio_producto, stock_producto}
-
-// producots
-// mandamos mensaje : ok
-// middleware
-
 // nombre de array, cantidad de elementos que tiene
-router.post('/', upload.array('file',1) ,async(req,res,next)=> {
+router.post('/', upload.array('file',2) ,async(req,res,next)=> {
 
-    try {
-        let nombre_imagen = req.files[0].filename;
-        let sol = req.files[0].path;
-        console.log("Linea 27 :",req.files[0]);
-        //El path es la ruta donde se guarda, en este caso se guardaron en la ruta "path"
-        console.log("El path de la imagen: ", sol);
+    try {            
+        console.log("Llego al cotroller upload.js");
+        console.log(req.files[0]);
+        let nombre_ejercicio = req.files[0].filename;
+        //Implementacion de la parte solucion
 
-        let obj = {
-            id_curso: Number(req.body.id_curso) ,
-            id_usuario: req.id,
-            enunciado_ejercicio: nombre_imagen,
-            solucion: sol
-        }
-        console.log(obj);   
-       
-                  
         // leo archivo temporal --> escribo un nuevo archivo (con nuevo nombre dentro de una ubicacion x)
-        //let cadena = hola/chau
+        // let cadena = hola/chau
         // cadena.split('/) --> ['hola','chau']
-
         if(req.files[0].mimetype == 'image/jpeg' || req.files[0].mimetype == 'image/png') {
+            console.log("Enntro linea 31");
+            
             let ext = req.files[0].mimetype.split('/'); // [image,jpeg]
             ext = "."+ext[1];
-            fs.createReadStream('./uploads/'+req.files[0].filename).pipe(fs.createWriteStream('./uploads/'+nombre_imagen +ext))
+            fs.createReadStream('./uploads/'+req.files[0].filename).pipe(fs.createWriteStream('./uploads/'+nombre_ejercicio +ext))
+            console.log("Linea 36");
+            
             fs.unlink('./uploads/'+req.files[0].filename,(err) => {
                 if(err) {
+                    console.log("error linea 40");
                     console.log(err);
                 }
             })
+            console.log("Linea 44",nombre_ejercicio + ext);
             
-            obj.enunciado_ejercicio = nombre_imagen + ext;
+            let obj = {
+                id_curso: Number(req.body.id_curso) ,
+                id_usuario: req.id,
+                enunciado_ejercicio: nombre_ejercicio + ext,
+            }
+            console.log(obj);  
+
             let post_cargado = await postModel.insertPost(obj);
             console.log("post cargado: ",post_cargado);
             
+            //Cargo solucion ?? req.files[1]
+            if(req.files[1]){
+                if(req.files[1].mimetype == 'image/jpeg' || req.files[1].mimetype == 'image/png') {
+                    console.log("Enntro linea 56");
+                    let nombre_solucion = req.files[1].filename;//uuid()
+                    let ext = req.files[1].mimetype.split('/'); // [image,jpeg]
+                    ext = "."+ext[1];
+                    fs.createReadStream('./uploads/'+req.files[1].filename).pipe(fs.createWriteStream('./uploads/'+nombre_solucion +ext))
+                    console.log("Linea 60");
+                    
+                    fs.unlink('./uploads/'+req.files[1].filename,(err) => {
+                        if(err) {
+                            console.log("error linea 64");
+                            console.log(err);
+                        }
+                    })
+                    console.log("Linea 68",nombre_solucion + ext);
+                    
+                    let obj = {
+                        id_post: post_cargado ,
+                        id_user_solucion: req.id,
+                        id_solucion: nombre_solucion + ext,
+                    }
+                    console.log("Insertar la solucion",obj);  
+        
+                     let solucion_usuario = await solucionesModel.cargarSolucion(obj);
+                     console.log("post cargado: ",solucion_usuario);
+    
+                }
+            }else{
+                console.log("No cargo una solucion");
+            }
+
             res.json({status : 'ok'});
         } else {
             res.json({status : 'invalid'})

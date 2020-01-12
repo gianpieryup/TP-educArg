@@ -16,7 +16,10 @@
             <br>
             Ejercicio: 
             <input type="file"  (change)="onFileSelected($event)"> 
-            <br><br><br>
+            <br><br>
+            Solucion: 
+            <input type="file"  (change)="selectedSolucion($event)"> 
+            <br><br>
             <button type="button" (click)="subir()" class="btn btn-primary">Subir información</button>
             </form>
         </div>

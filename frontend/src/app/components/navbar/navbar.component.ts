@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
   admin : boolean = false;
   login : boolean;
   nombre : string = '';
+  id_post_buscado : string = '';//
   constructor(private router : Router) { }
 
   ngOnInit() {
@@ -30,9 +31,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['home'])
     // location.reload();
   }
-  filtrar(){
-    console.log("Persiono el botom Buscar en el Navbar");
-    console.log("El post buscado es:  ");
+  buscar(){
+    console.log("Persiono el botom Buscar en el Navbar co ID:",this.id_post_buscado);
+    this.router.navigate(['posts/',this.id_post_buscado]) 
   }
 
 }

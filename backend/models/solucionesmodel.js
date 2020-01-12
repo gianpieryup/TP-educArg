@@ -13,4 +13,18 @@ async function solucionesCompradas(id_user) {
     }
 }
 
-module.exports = {solucionesCompradas}
+async function cargarSolucion(obj) {
+    try{
+        console.log("Linea 18 solucionesmodel.js");
+        let query = "INSERT INTO soluciones_usuario set  ?";
+        const rows = await pool.query(query,obj);
+        console.log(rows);
+        
+        return rows;
+    } catch(error) {
+        console.log("Error en el modelo solucionesModel/cargarSolucion()");
+        throw error;
+    }
+}
+
+module.exports = {solucionesCompradas,cargarSolucion}
