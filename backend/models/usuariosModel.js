@@ -3,8 +3,11 @@ const md5 = require('md5');
 
 async function getUsuario(id) {
     try {
+        console.log("Entro a get usuario");
+        
         let query = "select nombre_usuario, telefono_usuario, mail_usuario, salvavidas from ?? where id_usuario = ?";
         const rows = await pool.query(query,[process.env.TABLA_USUARIOS,id]);
+        console.log("lo que devuelve",rows);
         return rows; 
     } catch (error) {
         throw error;

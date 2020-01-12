@@ -32,4 +32,10 @@ export class PostEjercicioComponent implements OnInit {
     }  
     
   }
+
+  async comprar(){
+    //debo comprar el ejercicio
+    let respuesta_server : any = await this.usuariosService.comprarEjercicio(this.id_post); 
+    console.log(respuesta_server);
+  }
 }

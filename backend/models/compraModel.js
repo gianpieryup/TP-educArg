@@ -50,8 +50,8 @@ async function comprar(idUsuario,idPots) {
         //notification_url es la url a la que mercado pago me redirige si la compra fue exitosa
 
     let obj_mercadopago = await mp.comprar(preference);
-    console.log(obj_mercadopago)
-    console.log(preference.notification_url);
+   // console.log(obj_mercadopago)
+   // console.log(preference.notification_url);
     
     return obj_mercadopago.body.sandbo_init_point;
     } catch (error) {

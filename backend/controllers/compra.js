@@ -10,12 +10,14 @@ router.post('/:id_post',async(req,res,next)=>{
 
             //validacion de que tiene dinero
             let user = await usuariosModel.getUsuario(req.id);
-            if(user.salvavidas = 0){
-                res.status(401).json({status : 'Dinero insuficiente'});
+            console.log("Info del usuario",user[0]);               
+            if(user[0].salvavidas <= 0){
+                console.log("compra.js linea 16");
+                res.json({status : 'Dinero insuficiente'});
+            }else{
+                let compra_ok = await compraModel.comprar(req.id,req.params.id_post);  
+                res.json({status : 'ok', url : compra_ok});
             }
-            let compra_ok = await compraModel.comprar(req.id,req.params.id_post);   //req.id |(este :id) del usuario,Lo saca magicamente del token
-            // compra_ok : url de mercadoPago
-            res.json({status : 'ok', url : compra_ok});
         } else {
             res.status(401).json({status : 'unauthorized'});
         }

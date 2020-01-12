@@ -48,9 +48,15 @@ export class UsuariosService extends BaseService{
     this.setEndPoint('usuarios/changedatos');
     return this.put(obj);
   }
-  //comprar ejercicios
+  //comprar salvavidas
   async putSalvavidas(obj) {
     this.setEndPoint('usuarios/saldoUpdate');
     return this.put(obj);
+  }
+
+  //comprar ejercicio
+  async comprarEjercicio(id) {
+      this.setEndPoint('compra/'+id);
+      return this.post({});
   }
 }
