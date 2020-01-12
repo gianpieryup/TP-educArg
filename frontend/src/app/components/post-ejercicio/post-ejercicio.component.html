@@ -3,15 +3,16 @@
 <div class="container">
     <h3>Vista individual del producto</h3>
 
-    <div class="ejercicio">
-        <img [src]="url"   class="post" >
-        <!-- <img src="../assets/img/pob3.png" class="post"> -->
-        <div class="text-post">
-            <div class="info">Id : 789</div>
-            <div class="info">Autor : {{ post.nombre_usuario }}</div>
-            <div class="info">Fecha Publicacion : 2020-12-01</div>
-        </div>
-    </div>
-    <a  class="btn btn-outline-success">Comprar solucion</a>
+    <div *ngIf="existeElPost" >
+        <div class="ejercicio">
+        <img [src]="'http://localhost:3000/uploads/' + post.enunciado_ejercicio" class="post">
 
+        <div class="text-post">
+            <div class="info">Id : {{id_post}}</div>
+            <div class="info">Autor : {{ post.nombre_usuario }}</div>
+            <div class="info">Fecha Publicacion : {{post.fecha_post}}</div>
+        </div>
+        </div>
+        <a  class="btn btn-outline-success">Comprar solucion</a>
+    </div>
 </div>

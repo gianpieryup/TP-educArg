@@ -13,7 +13,7 @@
                 </div>  
          
             <div class="caja-imagen">
-                <img src="https://i1.wp.com/www.sopitas.com/wp-content/uploads/2017/05/pepe-rana-860x581.jpg">
+                <img [src]="'http://localhost:3000/uploads/' + p.enunciado_ejercicio" >
             </div>        
             <div class="card-body text-center">
                 <a  class="btn btn-outline-info" (click) = "navigate(p.id_post)">Ver mas</a>
