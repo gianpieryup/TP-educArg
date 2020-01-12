@@ -1,13 +1,14 @@
 # educArg
 ##  Funcionalidades(Subtitulo)
 
-- Loguearse (OK| Alternativa un check importado de una imagen)
+- Loguearse: ✔
 
-- Registrarse (OK| A)
+- Registrarse:  ✔
 
-- Cargar Post (Podemos recomendar la resolucion y/o Proporcionales)
+- Cargar Post: ✔ (Podemos recomendar la resolucion y/o Medida proporcional)
 
-- Perfil: Editar info (OK|A) | Cambiar contraseña (Pen)
+- Perfil: Editar info ✔ | Cambiar contraseña (Pen)
+
 Se le debe presentar Dos Botones abajo
 Uno precargado(y presionado) con el ejercicios que compro
 |-> Deberia cargar todos los IDs de las soluciones que compro | Copiar las vistas del componente Ejercicios (Pen)
