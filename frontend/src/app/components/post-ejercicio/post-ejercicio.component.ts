@@ -14,6 +14,8 @@ export class PostEjercicioComponent implements OnInit {
   existeElPost: boolean = true;
   respuesta : string;
   solucion: boolean = false;
+  //habilitar el botom de comprar solucion oficial
+  //habilitar el botom de subir solucionn propia
 
   constructor(private postsService :PostsService, private activateRouter :ActivatedRoute ,private router :Router, private usuariosService : UsuariosService) { }
 
@@ -34,18 +36,20 @@ export class PostEjercicioComponent implements OnInit {
       this.existeElPost = false;
     } 
     /*
-    
-    Si (estoy logueado)
-      Ambos habilitados en la declaracion d variables
-              habilitar el botom de comprar solucion oficial
-              habilitar el botom de subir solucionn propia
-          
-          habiliar el botom de comprar solucion solo si hay una solucion oficial,
-          if(solucion == null){
+    if (localstorage.getItem('JWT')){//si alguien me dice cual es la mejor forma de resolver esta cuestion cuentenme
+        Ambos habilitados en la declaracion d variables
+         
+          if(this.post.solucion == null){//REvisar si el valor es undefinide
             no hay solucion ->    (y mencionar que no hay solucion oficial todavia)
             deshabilitar el botom de comprar solucion oficial
           }else{
-            hay solucion oficial        
+            hay solucion oficial//devolvera un 400 si no estoy logueado y ademas me valida el JWT que usuario soy
+            let buy_solution_oficial : any = await this.userService.getSolucionOficial(this.id_post);//El id me lo saca del JWT
+            
+            TASK:: Crear el servicio en el front y Agregar metodos en el BACK -> en el controler usuarios
+            
+            let answer_own_solution : any = await this.userService.getSolucionPropia(this.id_post);//El id me lo saca del JWT 
+
             if(yo compre esta solucion){
               mostrar la solucion
               deshabilitar el botom de comprar solucion oficial
@@ -56,7 +60,7 @@ export class PostEjercicioComponent implements OnInit {
               deshabilitar el botom de subir solucionn propia
             }
           }
-
+     }
     */
     
   }

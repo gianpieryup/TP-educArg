@@ -22,6 +22,8 @@ export class PerfilComponent implements OnInit {
 
   }
   async cambiarPassword() {
+    console.log("el pasword nuevo que elije",this.password.value);
+    //Probar cambio de contraseña
     let actualizar_pwd = await this.usuariosService.putPassword(this.password.value);
     console.log(actualizar_pwd);
   }

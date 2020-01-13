@@ -13,9 +13,9 @@ router.put('/changedatos', async(req,res,next)=> {
     }
 })
 
-router.put('/changepassword/:id', async(req,res,next)=> {
+router.put('/changepassword', async(req,res,next)=> {
     try {
-
+        ///changepassword/:id pero el id sale del req.id -> se lo quito
         console.log(req.body.password_usuario);
         let actualizar_data = await usuariosModel.putUsuarioPassword(req.body.password_usuario,req.id);
         res.json({status : 'ok'})
