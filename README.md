@@ -59,6 +59,10 @@ respuesta [Por defecto: Revision Pendiente] ✔
 
 
 __________________________________________________________________________________________________
+Vulnerabilidades: Updates versiones, salen en las warnings de github
+https://www.npmjs.com/package/constantinople
+
+__________________________________________________________________________________________________
 
 preuba
 
