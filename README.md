@@ -64,7 +64,10 @@ https://www.npmjs.com/package/constantinople
 
 __________________________________________________________________________________________________
 
-preuba
+#### Localizar e ir a cualquier cosa de manera inmediata
+En Visual Studio Code:      `Ctrl + T`
+
+
 
 Actualizar el .apib
 aglio -i documentation.apib -o documentation.html
@@ -75,3 +78,4 @@ DB_HOST = "localhost" DB_USER ="root" DATABADE_PORT = "3307" // "3306" DB_PASSWO
 TABLA_CURSOS = "cursos" TABLA_POST = "posts" TABLA_USUARIOS = "usuarios" TABLA_SOLUCION_COMPRADAS = "soluciones_compradas"
 
 URL="localhost:3000/"
+

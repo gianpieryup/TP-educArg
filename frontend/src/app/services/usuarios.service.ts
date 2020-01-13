@@ -34,7 +34,7 @@ export class UsuariosService extends BaseService{
       this.setEndPoint('usuarios');
       return this.get();
     } catch (error) {
-
+      throw  error;
     }
   }
 
@@ -48,15 +48,30 @@ export class UsuariosService extends BaseService{
     this.setEndPoint('usuarios/changedatos');
     return this.put(obj);
   }
-  //comprar salvavidas
+  //Comprar salvavidas
   async putSalvavidas(obj) {
     this.setEndPoint('usuarios/saldoUpdate');
     return this.put(obj);
   }
 
-  //comprar ejercicio
+  //Comprar ejercicio
   async comprarEjercicio(id) {
       this.setEndPoint('compra/'+id);
       return this.post({});
   }
+  //Soluciones Compradas [Pendiente|Probar]
+  async solucionesCompradas() {
+    try {
+      this.setEndPoint('usuarios/solucionesCompradas');
+      return this.get();
+    } catch (error) {throw  error;}
+  }
+  //Posts Respondidos [Pendiente|Probar]
+  async postsRespondidos() {
+    try {
+      this.setEndPoint('usuarios/postsRespondidos');
+      return this.get();
+    } catch (error) {throw  error;}
+  }
+
 }

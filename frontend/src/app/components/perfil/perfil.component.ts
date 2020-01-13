@@ -3,6 +3,8 @@ import { FormGroup , FormControl, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -13,6 +15,10 @@ export class PerfilComponent implements OnInit {
   password : FormGroup
   show_form : boolean;
   habilitar_password : boolean = false;
+//Probar esto
+  soluciones_compradas : any [] = [];
+  posts_respondidos : any [] = [];
+
 
   showPassword() {
     this.habilitar_password = true;
@@ -32,6 +38,7 @@ export class PerfilComponent implements OnInit {
 
   async ngOnInit() {
     let data : any = await this.usuariosService.getUsuario();
+
     console.log(data);
     if(data.status == 'ok') {
       this.show_form = true;
@@ -42,9 +49,14 @@ export class PerfilComponent implements OnInit {
       'nombre_usuario' : new FormControl(data.data.nombre_usuario, [Validators.required]),
       'telefono_usuario' : new FormControl(data.data.telefono_usuario, [Validators.required])
     })
+
     //cargar los ejercicios comprados
-      //Tengo ya una ruta para hacerlo
-    //(Opcional: cargar los ejercicios publicados)
+    let data_soluciones : any = await this.usuariosService.solucionesCompradas();
+    let data_respondidos : any = await this.usuariosService.postsRespondidos();
+    console.log(data_soluciones.data);
+    console.log(data_respondidos.data);
+    //Ver si traen array vacios //ver la validacion en el front con angular compuesto
+    
   }
 
   async putUsuario(){

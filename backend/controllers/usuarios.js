@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const usuariosModel = require('../models/usuariosModel');
-const compraModel = require('../models/compraModel')
+const compraModel = require('../models/compraModel'); //Para historial que esta deshabilitada
+const solucionesModel = require('../models/solucionesModel');
+
 
 router.put('/changedatos', async(req,res,next)=> {
     try {
@@ -79,5 +81,31 @@ router.put('/saldoUpdate', async(req,res,next)=> {
         res.status(500).json({status : 'error'});
     }
 })
+
+//  Probar estos dos de un [usuario]
+// Esto me trae las soluciones compradas por el usuario logueado
+router.get('/solucionesCompradas', async(req,res,next)=> {
+    try {
+        console.log("El id del JWT: ",req.id);
+        let soluciones_compradas = await solucionesModel.solucionesCompradas(req.id);
+        res.json({status : 'ok', data: soluciones_compradas})
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({status : 'error'});
+    }
+})
+
+//esto me trae las soluciones que respondidas por el usuario
+router.get('/postsRespondidos', async(req,res,next)=> {
+    try {
+        console.log("El id del JWT: ",req.id);
+        let posts_respondidos = await solucionesModel.postsRespondidos(req.id);
+        res.json({status : 'ok', data: posts_respondidos})
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({status : 'error'});
+    }
+})
+//
 
 module.exports = router;

@@ -15,8 +15,6 @@ router.get('/', async(req,res,next)=> {
     }
 })
 
-//Post filtrado por curso :PendienteCCCCCCCCCCCCCCCCCCCCCCCCC
-
 //Post especifico
 router.get('/:id_post', async(req,res,next)=> {
     try {//podria restringir aa que no pueda buscar uno pendiente| es nesesario
@@ -32,6 +30,8 @@ router.get('/:id_post', async(req,res,next)=> {
     }
 })
 
+/*
+Creo que lo tenia para Testear, luego de cerrado todo eliminar.
 router.post('/cargar', async(req,res,next)=> {
     try {//podria restringir aa que no pueda buscar uno pendiente| es nesesario
         let obj = {
@@ -47,6 +47,9 @@ router.post('/cargar', async(req,res,next)=> {
     } catch(error) {    
         res.status(500).json({status : 'error'});
     }
-})
+})*/
+
+
+
 
 module.exports = router;
