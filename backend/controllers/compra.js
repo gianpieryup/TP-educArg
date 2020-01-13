@@ -12,7 +12,7 @@ router.post('/:id_post',async(req,res,next)=>{
             let user = await usuariosModel.getUsuario(req.id);
             console.log("Info del usuario",user[0]);               
             if(user[0].salvavidas <= 0){
-                console.log("compra.js linea 16");
+                console.log("compra.js linea 15");
                 res.json({status : 'Dinero insuficiente'});
             }else{
                 let compra_ok = await compraModel.comprar(req.id,req.params.id_post);  

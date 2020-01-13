@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2020 a las 02:21:24
+-- Tiempo de generación: 13-01-2020 a las 02:06:36
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -73,6 +73,20 @@ CREATE TABLE `soluciones_compradas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `soluciones_usuario`
+--
+
+CREATE TABLE `soluciones_usuario` (
+  `id_solucion` varchar(200) NOT NULL,
+  `id_user_solucion` int(11) NOT NULL,
+  `id_post` int(11) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT '0',
+  `respuesta` varchar(200) DEFAULT 'Respuesta Pendiente'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -87,6 +101,13 @@ CREATE TABLE `usuarios` (
   `salvavidas` int(11) NOT NULL DEFAULT '0',
   `codigo_mail_usuario` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `mail_usuario`, `permisos_usuario`, `password_usuario`, `cuenta_confirmada`, `telefono_usuario`, `salvavidas`, `codigo_mail_usuario`) VALUES
+(1, 'juancito', 'juacito@gmail.com', 0, '81dc9bdb52d04dc20036dbd8313ed055', 0, 1123953136, 4, 'd03d2d37-d34f-4fdb-9b59-e3d2d0a886bb');
 
 --
 -- Índices para tablas volcadas
@@ -114,6 +135,12 @@ ALTER TABLE `soluciones_compradas`
   ADD KEY `id_posts` (`id_posts`);
 
 --
+-- Indices de la tabla `soluciones_usuario`
+--
+ALTER TABLE `soluciones_usuario`
+  ADD UNIQUE KEY `id_user_solucion` (`id_user_solucion`,`id_post`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -139,7 +166,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

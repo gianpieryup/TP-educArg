@@ -17,20 +17,21 @@ El otro Publicados
 
 - Comprar Salvavidas:  ✔
 
-- El usuario debe poder comprar la solucion de un ejercicio (Revisar) | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente @Como hagarro el error 404@) ❌
+- El usuario debe poder comprar la solucion de un ejercicio (Revisar) | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente ✔
 
 - El usuario no debe comprar dos veces el mismo ejercicio si lo compro desabiliar el botom de comprar y cargar la solucion: Posible solucion:: Si estoy logueado en el onInit() del componte postejercicio if(loguado){cargar de la tabla intermedia si tengo el ejercicio(req.id, req.param.id_post)} ❌
 
-- Al momento de comprar> pedir a la base info del usuario JWT me traigo su cant de salvavidas y lo comparo: ❌
+- Al momento de comprar> pedir a la base info del usuario JWT me traigo su cant de salvavidas y lo comparo: ✔
 if( saldo < Precio){
-    le boto un alert sweet de no tiene suficiente/Mensaje del saldo actual = 0
-}else{
+    le boto un alert sweet de no tiene suficiente/Mensaje del saldo actual = 0 : 🔘  
+}else{ : ✔
     el procedimiento habitual de comprar
     redireccionar al perfil
 }
 
 
-- |---> Un Buscador por ID del ejercicio en el Navbar: ❌
+- |---> Un Buscador por ID del ejercicio en el Navbar: ✔ / [curiosidad] al pasar de una vista a otra desde el navbar no recarga la pagina si no el componente y eso no trae de nuevo 🔘 
+
 
 
 ## |--------------> Implementaciones secundarias
@@ -42,9 +43,9 @@ id_solucion int incremental
 id_user_solucion int(unique)
 id_post int (unique , con lo de arriba)//Esto lo podemos validar al hacer una llamada al back :preguntando si continuan
 estado inicial [0:pendiente/1:Aprobado/2:Rechazado]
-respuesta [Por defecto: Revision Pendiente]
+respuesta [Por defecto: Revision Pendiente] ✔
 
-- Cuando un Usuario Carga una solucion a un determinado post y/o un usuario sube un problema con solucion se inserta un elemento a la tabla de arriba: ❌
+- Cuando un Usuario Carga una solucion a un determinado post y/o un usuario sube un problema con solucion se inserta un elemento a la tabla de arriba: ✔
 
 
 - Añadir un Botom al usuario que diga resueltos: ❌
