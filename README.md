@@ -1,7 +1,7 @@
 # educArg
-##  Funcionalidades(Subtitulo)
+##  Funcionalidades
 
-- Loguearse: ✔ ✓ ✔ ✅ ❌ ⋆ ★ ☆✦ ✪✹🌟🌠✲ 🔴⦿🔘⚫〇 ✖✗
+- Loguearse: ✔
 
 - Registrarse:  ✔
 
