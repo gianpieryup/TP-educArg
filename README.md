@@ -7,17 +7,16 @@
 
 - Cargar Post: ✔ (Podemos recomendar la resolucion y/o Medida proporcional)
 
-- Perfil: Editar info ✔ | Cambiar contraseña ❌
+- Perfil: Editar info ✔ | Cambiar contraseña ✔ -> redireccionar a login y probar su nueva contraseña ✔ 
+- Perfil 2.0 : Validar y mostrar error de contraseña incorrecta ❌ {ayuda: si viene con unn array vacio mostrar informacion invalida, podriamos preguntar por el mail primero y luego por la coincidencia total}
 
-Se le debe presentar Dos Botones abajo
-Uno precargado(y presionado) con el ejercicios que compro
-|-> Deberia cargar todos los IDs de las soluciones que compro | Copiar las vistas del componente Ejercicios (Pen)
-El otro Publicados
-|-> Debe aparecer el estado pendiente/OK/Denegado
+- Se le debe presentar Dos Botones abajo => Uno precargado(y presionado) con el ejercicios que compro
+- |-> Deberia cargar todos los IDs de las soluciones que compro | Copiar las vistas del componente Ejercicios (Pen)
+- El otro Publicados |-> Debe aparecer el estado pendiente/OK/Denegado
 
-- Comprar Salvavidas:  ✔
+- Comprar Salvavidas:5 ,10 y 100  ✔
 
-- El usuario debe poder comprar la solucion de un ejercicio (Revisar) | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente ✔
+- El usuario debe poder comprar la solucion de un ejercicio | Solo si tiene salvavidas disponibles(Pendiente creo que falta cuando tenga 0 ponner un aviso de saldo insuficiente ✔
 
 - El usuario no debe comprar dos veces el mismo ejercicio si lo compro desabiliar el botom de comprar y cargar la solucion: Posible solucion:: Si estoy logueado en el onInit() del componte postejercicio if(loguado){cargar de la tabla intermedia si tengo el ejercicio(req.id, req.param.id_post)} ❌
 
@@ -48,8 +47,8 @@ respuesta [Por defecto: Revision Pendiente] ✔
 - Cuando un Usuario Carga una solucion a un determinado post y/o un usuario sube un problema con solucion se inserta un elemento a la tabla de arriba: ✔
 
 
-- Añadir un Botom al usuario que diga resueltos: ❌
-|-- Este debe cargar soluciones
+- Añadir un Botom al usuario que diga resueltos|-- Este debe cargar soluciones ❌
+
 
 ### EL ADMIN
 ##### PENDIENTES >  posts Otro botom Soluciones Solo que le muestre la foto de la solucion y el id del post

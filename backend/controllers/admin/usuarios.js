@@ -12,6 +12,21 @@ router.get('/:id_cliente', async(req,res,next) => {
         console.log("Error en el controlador controllers/admin",error);
         throw error;
     }
+})//Creo que esto es del profe// borrar si no sirve
+
+//Usuario especifico//para el admin solamente-------------------
+router.get('/:id_user', async(req,res,next)=> {
+    try {
+        let user = await usuariosModel.getUsuario( req.params.id_user);
+        if(user.length > 0) {
+            res.json({ status : 'ok', data : user[0]});
+        } else {
+            res.json({ status : 'ok', data : "Usuario no encontrado"} );
+        }
+
+    } catch(error) {    
+        res.status(500).json({status : 'error'});
+    }
 })
 
 module.exports = router; 

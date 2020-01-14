@@ -16,7 +16,7 @@ async function cargarSolucion(obj) {
 
 async function solucionesCompradas(id_user) {
     try{
-        let query = "SELECT id_posts FROM soluciones_compradas where id_usuario = ?";
+        let query = "SELECT id_posts FROM soluciones_compradas WHERE id_usuario = ?";
         const rows = await pool.query(query,id_user);
         console.log(rows);
         
@@ -30,7 +30,7 @@ async function solucionesCompradas(id_user) {
 //Probar pendiente
 async function postsRespondidos(id_user) {
     try{
-        let query = "SELECT * FROM soluciones_usuario where id_user_solucion = ?";
+        let query = "SELECT * FROM soluciones_usuario WHERE id_user_solucion = ?";
         const rows = await pool.query(query,id_user);
         console.log(rows);
         

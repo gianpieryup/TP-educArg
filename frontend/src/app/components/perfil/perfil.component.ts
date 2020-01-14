@@ -32,6 +32,7 @@ export class PerfilComponent implements OnInit {
     //Probar cambio de contraseña
     let actualizar_pwd = await this.usuariosService.putPassword(this.password.value);
     console.log(actualizar_pwd);
+    this.rooter.navigate(['login']);
   }
 
   constructor(private usuariosService : UsuariosService, private rooter : Router) { }
@@ -52,9 +53,10 @@ export class PerfilComponent implements OnInit {
 
     //cargar los ejercicios comprados
     let data_soluciones : any = await this.usuariosService.solucionesCompradas();
+    console.log(data_soluciones);
+
     let data_respondidos : any = await this.usuariosService.postsRespondidos();
-    console.log(data_soluciones.data);
-    console.log(data_respondidos.data);
+    console.log(data_respondidos);
     //Ver si traen array vacios //ver la validacion en el front con angular compuesto
     
   }

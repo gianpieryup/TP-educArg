@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usuariosModel = require('../models/usuariosModel');
 const compraModel = require('../models/compraModel'); //Para historial que esta deshabilitada
-const solucionesModel = require('../models/solucionesModel');
+const solucionesModel = require('../models/solucionesmodel');
 
 
 router.put('/changedatos', async(req,res,next)=> {
@@ -43,20 +43,7 @@ router.get('/', async(req,res,next)=> {
     }
 })
 
-//Usuario especifico//para el admin solamente-------------------
-router.get('/:id_user', async(req,res,next)=> {
-    try {
-        let user = await usuariosModel.getUsuario( req.params.id_user);
-        if(user.length > 0) {
-            res.json({ status : 'ok', data : user[0]});
-        } else {
-            res.json({ status : 'ok', data : "Post no encontrado"} );
-        }
 
-    } catch(error) {    
-        res.status(500).json({status : 'error'});
-    }
-})
 
 /*router.get('/historial', async(req,res,next)=> {
     try {
@@ -106,6 +93,6 @@ router.get('/postsRespondidos', async(req,res,next)=> {
         res.status(500).json({status : 'error'});
     }
 })
-//
+
 
 module.exports = router;
