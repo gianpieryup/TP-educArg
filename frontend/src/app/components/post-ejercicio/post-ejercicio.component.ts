@@ -12,8 +12,11 @@ export class PostEjercicioComponent implements OnInit {
   id_post : any;
   post: any = {enunciado_ejercicio : "preload.jpg"} ;
   existeElPost: boolean = true;
-  respuesta : string = "";
-  solucion: boolean = false;
+  respuesta : string = "";//Se usa para validar la respuesta
+
+  hayOficial: boolean = true;
+  loCompre : boolean = false;
+  noloRespondi : boolean = true;
   //habilitar el botom de comprar solucion oficial
   //habilitar el botom de subir solucionn propia
 
@@ -35,33 +38,31 @@ export class PostEjercicioComponent implements OnInit {
       console.log("Linea 30");
       this.existeElPost = false;
     } 
-    /*
-    if (localstorage.getItem('JWT')){//si alguien me dice cual es la mejor forma de resolver esta cuestion cuentenme
-        Ambos habilitados en la declaracion d variables
+
+    if (localStorage.getItem('JWT')){//si alguien me dice cual es la mejor forma de resolver esta cuestion cuentenme
+        //Ambos habilitados en la declaracion d variables
          
           if(this.post.solucion == null){//REvisar si el valor es undefinide
-            no hay solucion ->    (y mencionar que no hay solucion oficial todavia)
-            deshabilitar el botom de comprar solucion oficial
+            this.hayOficial = false;//deshabilita el botom de comprar y muestra un mensaje "No hay solucion oficial"
           }else{
-            hay solucion oficial//devolvera un 400 si no estoy logueado y ademas me valida el JWT que usuario soy
-            let buy_solution_oficial : any = await this.userService.getSolucionOficial(this.id_post);//El id me lo saca del JWT
+            //hay solucion oficial
+            let buy_solution_oficial : any = await this.usuariosService.solucionesCompradas();
+            //El id me lo saca del JWT
+            let answer_own_solution : any = await this.usuariosService.postsRespondidos(); 
+            let miSolucion =  answer_own_solution.filter(s => s.id_post == this.id_post);
+            console.log(miSolucion);
             
-            TASK:: Crear el servicio en el front y Agregar metodos en el BACK -> en el controler usuarios
-            
-            let answer_own_solution : any = await this.userService.getSolucionPropia(this.id_post);//El id me lo saca del JWT 
-
-            if(yo compre esta solucion){
-              mostrar la solucion
-              deshabilitar el botom de comprar solucion oficial
+            if(buy_solution_oficial.indexOf(this.id_post) != -1){//yo compre esta solucion
+              //mostrar la solucion
+              this.loCompre = true;//deshabilitar el botom de comprar solucion oficial
             }
 
-            if(yo subi mi solucion){
-              mostrar la solucion(todo) estado/fecha/respuesta
-              deshabilitar el botom de subir solucionn propia
+            if(miSolucion.length > 0){//yo subi mi solucion
+              this.noloRespondi = false;
+             // deshabilitar el botom de subir solucion propia
             }
           }
      }
-    */
     
   }
 

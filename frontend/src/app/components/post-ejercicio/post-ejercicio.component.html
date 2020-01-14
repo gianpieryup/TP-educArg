@@ -13,7 +13,18 @@
             <div class="info">Fecha Publicacion : {{post.fecha_post}}</div>
         </div>
         </div>
-        <a  class="btn btn-outline-success" (click)="comprar()">Comprar solucion</a>
+        <a  class="btn btn-outline-success" *ngIf="hayOficial; else noHayOficial" (click)="comprar()">Comprar solucion</a>
+        <ng-template #noHayOficial>
+            <div>No hay solucion Oficial</div>
+        </ng-template>
+        <div *ngIf="loCompre">
+            Mostrar la solucion oficila que la compre
+        </div>
+        <a  class="btn btn-outline-success" *ngIf="noloRespondi; else lasolucion" (click)="subirsolucion()">Subir solucion</a>
+        <ng-template #lasolucion>
+            <div>Mostrar la Solucion</div>
+        </ng-template>
+
         <div style="color: red;">{{respuesta}}</div>
     </div>
 </div>

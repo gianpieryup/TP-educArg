@@ -15,7 +15,7 @@ export class PerfilComponent implements OnInit {
   password : FormGroup
   show_form : boolean;
   habilitar_password : boolean = false;
-//Probar esto
+  //Listas cargadas
   soluciones_compradas : any [] = [];
   posts_respondidos : any [] = [];
 
@@ -51,14 +51,7 @@ export class PerfilComponent implements OnInit {
       'telefono_usuario' : new FormControl(data.data.telefono_usuario, [Validators.required])
     })
 
-    //cargar los ejercicios comprados
-    let data_soluciones : any = await this.usuariosService.solucionesCompradas();
-    console.log(data_soluciones);
 
-    let data_respondidos : any = await this.usuariosService.postsRespondidos();
-    console.log(data_respondidos);
-    //Ver si traen array vacios //ver la validacion en el front con angular compuesto
-    
   }
 
   async putUsuario(){
@@ -69,5 +62,17 @@ export class PerfilComponent implements OnInit {
     this.rooter.navigate(['home']);
   }
 
-
+  async comprados(){
+    //cargar los ejercicios comprados
+    let data_soluciones : any = await this.usuariosService.solucionesCompradas();
+    console.log(data_soluciones);
+    this.soluciones_compradas = data_soluciones;
+  }
+  
+  async resueltos(){
+    //cargar los ejercicios respondidos
+    let data_respondidos : any = await this.usuariosService.postsRespondidos();
+    console.log(data_respondidos);
+    this.posts_respondidos = data_respondidos;
+  }
 }

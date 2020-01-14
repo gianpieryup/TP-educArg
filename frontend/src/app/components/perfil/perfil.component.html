@@ -24,6 +24,20 @@
                 <input type="password" class="form-control" formControlName="password_usuario" placeholder="******">
                 <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
             </form>
+            
+            <!-- Probar todo esto -->
+            <div class="ejer_usuarios">       
+                <button (click)="comprados()">Comprados</button>
+                <button (click)="resueltos()">Resueltos</button>
+            </div>
+            <div *ngIf="(soluciones_compradas.length != 0)">
+                <div  *ngFor="let sc of soluciones_compradas">
+                    <button class="btn btn-primary" [routerLink]="['/posts',sc.id_posts]">{{sc.id_posts}}</button>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </div>

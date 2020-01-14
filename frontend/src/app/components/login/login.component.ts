@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       // sessionStorage (los datos permancen hasta que se cierra la pestaña)
       this.rooter.navigate(['home']);
     } else {
-      // usuario o contraseña incorrectos
+      console.log("Usuario o contraseña incorrectos");
+      
     }
     this.form.reset();
   }
