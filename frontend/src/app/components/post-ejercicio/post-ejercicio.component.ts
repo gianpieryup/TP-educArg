@@ -17,6 +17,8 @@ export class PostEjercicioComponent implements OnInit {
   hayOficial: boolean = true;
   loCompre : boolean = false;
   noloRespondi : boolean = true;
+
+  miSolucion : any ;
   //habilitar el botom de comprar solucion oficial
   //habilitar el botom de subir solucionn propia
 
@@ -39,29 +41,40 @@ export class PostEjercicioComponent implements OnInit {
       this.existeElPost = false;
     } 
 
-    if (localStorage.getItem('JWT')){//si alguien me dice cual es la mejor forma de resolver esta cuestion cuentenme
-        //Ambos habilitados en la declaracion d variables
+    if(localStorage.getItem('usuario')){//si alguien me dice cual es la mejor forma de resolver esta cuestion cuentenme
+       console.log("Estas Logeuado");
          
           if(this.post.solucion == null){//REvisar si el valor es undefinide
+            console.log("No hay solucion oficial");           
             this.hayOficial = false;//deshabilita el botom de comprar y muestra un mensaje "No hay solucion oficial"
+            //Basicamente no te permite comprar la solucion porque no esta todavia disponible
           }else{
-            //hay solucion oficial
-            let buy_solution_oficial : any = await this.usuariosService.solucionesCompradas();
-            //El id me lo saca del JWT
-            let answer_own_solution : any = await this.usuariosService.postsRespondidos(); 
-            let miSolucion =  answer_own_solution.filter(s => s.id_post == this.id_post);
-            console.log(miSolucion);
+            console.log("Hay Sol Oficial");
             
-            if(buy_solution_oficial.indexOf(this.id_post) != -1){//yo compre esta solucion
-              //mostrar la solucion
+            let buy_solution_oficial : any = await this.usuariosService.solucionesCompradas();
+            console.log("Mis Compras = ",buy_solution_oficial.data);
+            let miCompra =  buy_solution_oficial.data.filter((s) => s.id_posts == this.id_post);
+            console.log(miCompra);
+            
+            if(miCompra.length > 0){//yo compre esta solucion
+              console.log("Yo compre esta solucion");
               this.loCompre = true;//deshabilitar el botom de comprar solucion oficial
             }
-
-            if(miSolucion.length > 0){//yo subi mi solucion
-              this.noloRespondi = false;
-             // deshabilitar el botom de subir solucion propia
-            }
           }
+            
+            //El id me lo saca del JWT
+          let answer_own_solution : any = await this.usuariosService.postsRespondidos(); 
+          let miSolucion =  answer_own_solution.data.filter((s) => s.id_post == this.id_post);
+          console.log(miSolucion);
+            
+          if(miSolucion.length > 0){//yo subi mi solucion
+              console.log("Yo tengo una solucion a se ejercicio");
+              this.miSolucion = miSolucion[0];
+              console.log(this.miSolucion);
+              
+              this.noloRespondi = false;
+          }
+          
      }
     
   }

@@ -65,8 +65,8 @@ export class PerfilComponent implements OnInit {
   async comprados(){
     //cargar los ejercicios comprados
     let data_soluciones : any = await this.usuariosService.solucionesCompradas();
-    console.log(data_soluciones);
-    this.soluciones_compradas = data_soluciones;
+    console.log(data_soluciones.data);
+    this.soluciones_compradas = data_soluciones.data;//No olvidar el [.data]
   }
   
   async resueltos(){
