@@ -44,6 +44,8 @@ async function insertPost(obj) {
 }
 
 //Lo unico que se puede modificar de un post es el estado y se restringe para el admin
+//aca habria que cambiar a General  >>>>>>>>>>>>>>>>>>>>>>>>>>>>> CASA
+
 async function updatePost(estado,id) {
     try{
         let query = "UPDATE ?? set estado = ? where id_post = ?";        
