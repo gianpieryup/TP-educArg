@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/posts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UploadService } from './../../services/upload.service';
 
 @Component({
   selector: 'app-post-ejercicio',
@@ -19,10 +20,11 @@ export class PostEjercicioComponent implements OnInit {
   noloRespondi : boolean = true;
 
   miSolucion : any ;
-  //habilitar el botom de comprar solucion oficial
-  //habilitar el botom de subir solucionn propia
+  presionosubirsolucion : boolean = false;
 
-  constructor(private postsService :PostsService, private activateRouter :ActivatedRoute ,private router :Router, private usuariosService : UsuariosService) { }
+  solucionFile = null;
+
+  constructor(private postsService :PostsService, private activateRouter :ActivatedRoute ,private router :Router, private usuariosService : UsuariosService,private upload : UploadService) { }
 
    async ngOnInit() {
     //http:localhost:4200/posts/2  | recordar la ruta posts/:id
@@ -90,4 +92,18 @@ export class PostEjercicioComponent implements OnInit {
       this.router.navigate(['perfil']);
     }
   }
+  async subirsolucion(){
+    this.presionosubirsolucion = true;
+  }
+
+  async selectedSolucion(valor) { 
+    this.solucionFile = valor.target.files[0];
+    console.log(this.solucionFile);
+    const fd = new FormData();
+    fd.append('file',this.solucionFile, this.solucionFile.name);
+    fd.append('id_post',this.id_post)
+    let rta = await this.upload.postSolucion(fd);//OBJ
+    console.log(rta);
+  }
+
 }

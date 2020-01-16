@@ -27,6 +27,10 @@
         </ng-template>
 
         <a  class="btn btn-outline-success" *ngIf="noloRespondi; else lasolucion" (click)="subirsolucion()">Subir solucion</a>
+        <div *ngIf="presionosubirsolucion">
+            <input type="file"  (change)="selectedSolucion($event)"> 
+        </div>
+
         <ng-template #lasolucion>
             <div class="ejercicio">
                 <img [src]="'http://localhost:3000/uploads/' + miSolucion.id_solucion" class="post">

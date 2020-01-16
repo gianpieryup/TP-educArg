@@ -100,6 +100,35 @@ router.post('/', upload.array('file',2) ,async(req,res,next)=> {
     }
 })
 
+router.post('/solucionPropia', upload.array('file',1) ,async(req,res,next)=> {
+
+    if(req.files[0].mimetype == 'image/jpeg' || req.files[0].mimetype == 'image/png') {
+        console.log("Enntro linea 106");
+        let nombre_solucion = req.files[0].filename;//uuid()
+        let ext = req.files[0].mimetype.split('/'); // [image,jpeg]
+        ext = "."+ext[0];
+        fs.createReadStream('./uploads/'+req.files[0].filename).pipe(fs.createWriteStream('./uploads/'+nombre_solucion +ext))
+        console.log("Linea 111");
+        
+        fs.unlink('./uploads/'+req.files[0].filename,(err) => {
+            if(err) {
+                console.log("error linea 115");
+                console.log(err);
+            }
+        })
+        console.log("Linea 119",nombre_solucion + ext);
+        
+        let obj = {
+            id_post: req.body.id_post ,
+            id_user_solucion: req.id,
+            id_solucion: nombre_solucion + ext,
+        }
+        console.log("Insertar la solucion",obj);  
+
+         let solucion_usuario = await solucionesModel.cargarSolucion(obj);
+         console.log("post cargado: ",solucion_usuario);
+
+})
 
 module.exports = router;
 
