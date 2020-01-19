@@ -20,7 +20,7 @@ const uploadRouter = require('./controllers/upload');
 // Admin controller
 const postsAdminRouter = require('./controllers/admin/posts');
 const usuariosAdminRouter = require('./controllers/admin/usuarios');
-
+const solucionesAdminRouter = require('./controllers/admin/soluciones');
 
 var app = express();
 app.use(cors())
@@ -81,6 +81,7 @@ app.use('/upload',secured, uploadRouter);//deberia ponenr el secured para aceder
 // ADMIN 
 app.use('/admin/posts', securedAdmin, postsAdminRouter);
 app.use('/admin/usuarios', securedAdmin, usuariosAdminRouter);
+app.use('/admin/soluciones', securedAdmin, solucionesAdminRouter);
 
 
 // error handler
