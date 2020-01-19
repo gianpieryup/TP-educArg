@@ -6,7 +6,7 @@ const fs = require('fs');
 const uuid = require('uuid');
 
 const postModel = require('./../models/postModel');
-const solucionesModel = require('../models/solucionesModel');
+const solucionesModel = require('../models/solucionesmodel');
 
 // multer : Destino --> genera un archivo temporal
 // Identificamos el archivo, lo copiamos a la carpeta (Leer(temporal) -->(escribir este contenido dentro de la carpeta))
@@ -104,9 +104,13 @@ router.post('/solucionPropia', upload.array('file',1) ,async(req,res,next)=> {
 
     if(req.files[0].mimetype == 'image/jpeg' || req.files[0].mimetype == 'image/png') {
         console.log("Enntro linea 106");
-        let nombre_solucion = req.files[0].filename;//uuid()
+        let nombre_solucion = req.files[0].filename;
+        console.log(nombre_solucion);
+        
         let ext = req.files[0].mimetype.split('/'); // [image,jpeg]
-        ext = "."+ext[0];
+        ext = "."+ext[1];//cuidado con la extension :)
+        console.log(ext);
+        
         fs.createReadStream('./uploads/'+req.files[0].filename).pipe(fs.createWriteStream('./uploads/'+nombre_solucion +ext))
         console.log("Linea 111");
         
@@ -119,15 +123,18 @@ router.post('/solucionPropia', upload.array('file',1) ,async(req,res,next)=> {
         console.log("Linea 119",nombre_solucion + ext);
         
         let obj = {
-            id_post: req.body.id_post ,
+            id_post: Number(req.body.id_post) ,
             id_user_solucion: req.id,
             id_solucion: nombre_solucion + ext,
         }
         console.log("Insertar la solucion",obj);  
 
          let solucion_usuario = await solucionesModel.cargarSolucion(obj);
-         console.log("post cargado: ",solucion_usuario);
-
+         res.json({status : 'ok', data:solucion_usuario})
+        
+    }else {
+        res.json({status : 'invalid'})
+    }
 })
 
 module.exports = router;

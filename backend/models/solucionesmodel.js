@@ -5,7 +5,7 @@ async function cargarSolucion(obj) {
         console.log("Linea 18 solucionesmodel.js");
         let query = "INSERT INTO soluciones_usuario set  ?";
         const rows = await pool.query(query,obj);
-        console.log(rows);
+        console.log("Resultado del INSERT: ",rows);
         
         return rows;
     } catch(error) {

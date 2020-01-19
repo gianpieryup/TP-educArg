@@ -99,11 +99,14 @@ export class PostEjercicioComponent implements OnInit {
   async selectedSolucion(valor) { 
     this.solucionFile = valor.target.files[0];
     console.log(this.solucionFile);
+  }
+  async subir(){
     const fd = new FormData();
     fd.append('file',this.solucionFile, this.solucionFile.name);
     fd.append('id_post',this.id_post)
-    let rta = await this.upload.postSolucion(fd);//OBJ
+    let rta = await this.upload.postSolucion(fd);
     console.log(rta);
+    this.router.navigate(['perfil']);
   }
 
 }
