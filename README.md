@@ -8,7 +8,7 @@
 - Cargar Post: ✔ (Podemos recomendar la resolucion y/o Medida proporcional)
 
 - Perfil: Editar info ✔ | Cambiar contraseña ✔ -> redireccionar a login y probar su nueva contraseña ✔ 
-- Perfil 2.0 : Validar y mostrar error de contraseña incorrecta ❌ {ayuda: si viene con unn array vacio mostrar informacion invalida, podriamos preguntar por el mail primero y luego por la coincidencia total}
+- Perfil 2.0 : Validar y mostrar error de contraseña incorrecta 🔘🔘🔘 {ayuda: si viene con unn array vacio mostrar informacion invalida, podriamos preguntar por el mail primero y luego por la coincidencia total}
 
 - Se le debe presentar Dos Botones abajo => Uno  con el ejercicios que compro 🔘 
 - |-> Deberia cargar todos los IDs de las soluciones que compro en botones ue redirigen al post ✔ 
@@ -29,13 +29,13 @@ if( saldo < Precio){
 }
 
 
-- |---> Un Buscador por ID del ejercicio en el Navbar: ✔ / [curiosidad] al pasar de una vista a otra desde el navbar no recarga la pagina si no el componente y eso no trae de nuevo 🔘 
+- |---> Un Buscador por ID del ejercicio en el Navbar: ✔ / [curiosidad] al pasar de una vista a otra desde el navbar no recarga la pagina si no el componente y eso no trae de nuevo 🔘 `AYUDA`:Probar el recargar la pagina despues de la redireccion con la sentencia `location.reload(); que se uso en el componente pendientes`
 
 
 
 ## |--------------> Implementaciones secundarias
-- El usuario deberia cargar una solucion al ejercicio si no tiene solucion: ❌
-- Se deberia quitar el botom de (comprar solucion/cambiarlo por uno que diga Subir Solucion:-> Esto desOculta El input file {solucion} de un formulario) ❌
+- El usuario deberia cargar una solucion al ejercicio si no tiene solucion: ✔
+- Se deberia quitar el botom de (comprar solucion/cambiarlo por uno que diga Subir Solucion:-> Esto desOculta El input file {solucion} de un formulario) ✔
 
 - Se debe crear una tabla intermedia usuario_soluciones: ✔
 id_solucion int incremental
@@ -52,15 +52,12 @@ respuesta [Por defecto: Revision Pendiente] ✔
 
 ### EL ADMIN
 ##### PENDIENTES >  posts Otro botom Soluciones Solo que le muestre la foto de la solucion y el id del post
-- Le debe quedar dos botones uno presionado [autodeterminado] pendientes ose los de estado 0 y los pendientes de las solucione: ❌
+- Le debe mostrar pendientes osea los de estado 0 y los pendientes de las solucione: ❌
 - El admi debe poder modificar el post / en este caso modificar la solucion y/o el enunciado solamente: ❌
 - Ademas del estado/No se podra eliminar porque queda el registro para los usuarios que fueron rechazados: ❌
 
 
 __________________________________________________________________________________________________
-Vulnerabilidades: Updates versiones, salen en las warnings de github
-https://www.npmjs.com/package/constantinople
-
 __________________________________________________________________________________________________
 
 #### Localizar e ir a cualquier cosa de manera inmediata
@@ -68,13 +65,24 @@ En Visual Studio Code:      `Ctrl + T`
 
 
 
-Actualizar el .apib
+#### Actualizar el .apib
 aglio -i documentation.apib -o documentation.html
 
-Config del env
-DB_HOST = "localhost" DB_USER ="root" DATABADE_PORT = "3307" // "3306" DB_PASSWORD = "root123123" // "" DB_DATABASE = "tpelearning"
+#### Config del env
+- DB_HOST = "localhost" 
+- DB_USER ="root" 
+- DATABADE_PORT = "3306" 
+- DB_PASSWORD = ""
+- DB_DATABASE = "tpelearning"
 
-TABLA_CURSOS = "cursos" TABLA_POST = "posts" TABLA_USUARIOS = "usuarios" TABLA_SOLUCION_COMPRADAS = "soluciones_compradas"
+<br>
 
-URL="localhost:3000/"
+- TABLA_CURSOS = "cursos" 
+- TABLA_POST = "posts" 
+- TABLA_USUARIOS = "usuarios" 
+- TABLA_SOLUCION_COMPRADAS = "soluciones_compradas"
+
+<br>
+
+- URL="localhost:3000/"
 

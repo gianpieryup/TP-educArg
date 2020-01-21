@@ -22,9 +22,13 @@
                 <a  class="btn btn-outline-success" (click)="comprar()">Comprar solucion</a>
             </ng-template>
         </div>
+
         <ng-template #noHayOficial>
-            <div>No hay solucion Oficial</div>
+            <div class="caja-anuncio">
+                <span class="anuncio">No hay solucion Oficial</span>
+            </div>
         </ng-template>
+        
 
         <a  class="btn btn-outline-success" *ngIf="noloRespondi; else lasolucion" (click)="subirsolucion()">Subir solucion</a>
         <div *ngIf="presionosubirsolucion">
@@ -33,6 +37,7 @@
                 <button type="button" (click)="subir()" class="btn btn-primary">Subir solucion</button>
             </form>
         </div>
+
 
         <ng-template #lasolucion>
             <div class="ejercicio">

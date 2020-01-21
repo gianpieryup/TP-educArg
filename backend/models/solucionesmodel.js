@@ -17,7 +17,7 @@ async function cargarSolucion(obj) {
 async function solucionesCompradas(id_user) {
     try{
         let query = "SELECT id_posts FROM soluciones_compradas WHERE id_usuario = ?";
-        const rows = await pool.query(query,id_user);
+        const rows = await pool.query(query,id_use);
         console.log(rows);
         
         return rows;
@@ -41,6 +41,33 @@ async function postsRespondidos(id_user) {
     }
 }
 
+//FUNCIONALIDADES solo del ADMIN
+//Actualizar Solucion--------------------------------------------------------------
+async function updateSolucion(obj,user_solucion,post){
+    try{
+        let query = "UPDATE soluciones_usuario SET ?  WHERE id_user_solucion = ? && id_post = ?";
+        const rows = await pool.query(query,[obj,user_solucion,post]);
+        console.log(rows);
+        
+        return rows;
+    } catch(error) {
+        console.log("Error en el modelo solucionesModel/updateSolucion()");
+        throw error;
+    }
+}
+
+async function solucionesPendientes(){
+    try{
+        let query = "SELECT * FROM soluciones_usuario WHERE estado = 0";
+        const rows = await pool.query(query);
+        console.log(rows);
+        
+        return rows;
+    } catch(error) {
+        console.log("Error en el modelo solucionesModel/solucionesPendientes()");
+        throw error;
+    }
+}
 
 
-module.exports = {solucionesCompradas,cargarSolucion,postsRespondidos}
+module.exports = {solucionesCompradas,cargarSolucion,postsRespondidos,updateSolucion,solucionesPendientes}

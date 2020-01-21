@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin: 40px 0;
 }
 img{
     display: block;
@@ -23,4 +24,20 @@ img{
 }
 .info{
     padding: 20px 0;
+}
+
+.anuncio{
+    border: 2px solid black;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px 5px;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+}
+.caja-anuncio{
+    margin: 42x 0;
+    text-align: center;
 }

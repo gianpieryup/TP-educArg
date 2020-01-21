@@ -1,25 +1,35 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-        <h3 *ngIf="hayPendientes; else noHay" >Pendienntes</h3>
+
+    
+    <h3 *ngIf="hayPendientes; else noHay" >Pendienntes</h3>
         <ng-template #noHay>
             <h3>No hay pendientes </h3>
             <div>simolito de una cara feliz</div>
         </ng-template>
-<div class="row">
-    <div class="col-4" *ngFor="let p of postsPendientes" >
-        <div class="card" style="width: 18rem;">
-                <img src="https://i1.wp.com/www.sopitas.com/wp-content/uploads/2017/05/pepe-rana-860x581.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                   <h3>Usuario: {{ p.nombre_usuario}}  </h3>
-                  <h5 class="card-title">{{p.enunciado_ejercicio}}</h5>
-                  <!-- <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p> -->
-                  <div>{{p.fecha_post}}</div>
-                  <a  class="btn btn-outline-success" (click) = "aceptar(p.id_post)">Aceptar</a>
-                  <a  class="btn btn-outline-danger" (click) = "denegar(p.id_post)">Denegar</a>
-                </div>
-        </div>
-    </div>   
-</div>
+    <div class="row">
+        <div class="col-4" *ngFor="let p of postsPendientes" >
+            <div class="card" style="width: 18rem;">
+                <img [src]="'http://localhost:3000/uploads/' + p.enunciado_ejercicio" class="card-img-top">
+                    <div class="card-body">
+                    <h3>Usuario: {{ p.nombre_usuario}}  </h3>
+                    <h5 class="card-title">{{p.enunciado_ejercicio}}</h5>
+                    <!-- <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p> -->
+                    <div>{{p.fecha_post}}</div>
+                    <a  class="btn btn-outline-success" (click) = "aceptar(p.id_post)">Aceptar</a>
+                    <a  class="btn btn-outline-danger" (click) = "denegar(p.id_post)">Denegar</a>
+                    </div>
+            </div>
+        </div>   
+    </div>
        
+    <h3>Soluciones Pendientes</h3>
+    <button (click)="solucionesPendientes()">Soluciones</button>
+    <div *ngIf="(soluciones_pendientes.length != 0)">
+        <div  *ngFor="let sc of soluciones_compradas">
+            <button class="btn btn-primary" [routerLink]="['/posts',sc.id_posts]">{{sc.id_posts}}</button>
+        </div>
+    </div>
+
 </div>

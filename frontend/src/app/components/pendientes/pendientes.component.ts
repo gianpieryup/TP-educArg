@@ -11,6 +11,8 @@ import { Location } from '@angular/common';
 export class PendientesComponent implements OnInit {
   hayPendientes : boolean = true;
   postsPendientes : any [] = [];
+  soluciones_pendientes : any [] = [];
+
   constructor(private postsService : PostsService,private rooter : Router) { }
 
   async ngOnInit() {
@@ -41,5 +43,9 @@ export class PendientesComponent implements OnInit {
     if(respuesta_server.status === 'ok') {
       location.reload();
     }
+  }
+
+  async solucionesPendientes(){
+    
   }
 }
