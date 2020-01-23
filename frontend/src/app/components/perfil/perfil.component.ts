@@ -73,6 +73,6 @@ export class PerfilComponent implements OnInit {
     //cargar los ejercicios respondidos
     let data_respondidos : any = await this.usuariosService.postsRespondidos();
     console.log(data_respondidos);
-    this.posts_respondidos = data_respondidos;
+    this.posts_respondidos = data_respondidos.data;
   }
 }

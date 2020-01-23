@@ -19,23 +19,32 @@
             </form>
             <br><br>
             <button type="button" (click)="showPassword()" class="btn btn-warning">Cambiar contraseña</button>
-
+            <br><br>
             <form [formGroup]="password" *ngIf="habilitar_password" (ngSubmit)="cambiarPassword()">
                 <input type="password" class="form-control" formControlName="password_usuario" placeholder="******">
                 <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
             </form>
-            
-            <!-- Probar todo esto -->
+            <br>
             <div class="ejer_usuarios">       
                 <button (click)="comprados()">Comprados</button>
                 <button (click)="resueltos()">Resueltos</button>
             </div>
+            <br>
             <div *ngIf="(soluciones_compradas.length != 0)">
+                <h3>Soluciones compradas</h3>
                 <div  *ngFor="let sc of soluciones_compradas">
-                    <button class="btn btn-primary" [routerLink]="['/posts',sc.id_posts]">{{sc.id_posts}}</button>
+                    <button class="btn btn-primary" [routerLink]="['/posts',sc.id_posts]">Post con id = {{sc.id_posts}}</button>
                 </div>
             </div>
-
+            <br>
+            <!-- Probar todo esto -->
+            <div *ngIf="(posts_respondidos.length != 0)">
+                <h3>Solucionnes Propias</h3>
+                <div  *ngFor="let p of posts_respondidos">
+                    <br>
+                    <button class="btn btn-primary" [routerLink]="['/posts',p.id_post]">Post con id = {{p.id_post}}</button>
+                </div>
+            </div>
 
 
         </div>
