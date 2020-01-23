@@ -137,6 +137,41 @@ router.post('/solucionPropia', upload.array('file',1) ,async(req,res,next)=> {
     }
 })
 
+
+router.post('/solucionOficial', upload.array('file',1) ,async(req,res,next)=> {
+
+    if(req.files[0].mimetype == 'image/jpeg' || req.files[0].mimetype == 'image/png') {
+        console.log("Enntro linea 144");
+        let nombre_solucion = req.files[0].filename;
+        console.log(nombre_solucion);
+        
+        let ext = req.files[0].mimetype.split('/'); // [image,jpeg]
+        ext = "."+ext[1];//cuidado con la extension :)
+        console.log(ext);
+        
+        fs.createReadStream('./uploads/'+req.files[0].filename).pipe(fs.createWriteStream('./uploads/'+nombre_solucion +ext))
+        console.log("Linea 111");
+        
+        fs.unlink('./uploads/'+req.files[0].filename,(err) => {
+            if(err) {
+                console.log("error linea 115");
+                console.log(err);
+            }
+        })
+        console.log("Linea 161",nombre_solucion + ext);
+        
+        let obj = {
+            id_usuario_solucion: req.body.id_user,
+            solucion: nombre_solucion + ext
+        }
+        console.log("Insertar la solucion",obj);  
+
+         let solucion_usuario = await postModel.updatePost(obj,Number(req.body.id_post));
+         res.json({status : 'ok', data:solucion_usuario})
+        
+    }else {
+        res.json({status : 'invalid'})
+    }
+})
+
 module.exports = router;
-
-

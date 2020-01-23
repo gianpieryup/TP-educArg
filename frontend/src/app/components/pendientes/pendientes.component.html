@@ -17,8 +17,8 @@
                     <h5 class="card-title">{{p.enunciado_ejercicio}}</h5>
                     <!-- <p>likes {{p.likes}}  dislikes {{p.dislikes}}</p> -->
                     <div>{{p.fecha_post}}</div>
-                    <a  class="btn btn-outline-success" (click) = "aceptar(p.id_post)">Aceptar</a>
-                    <a  class="btn btn-outline-danger" (click) = "denegar(p.id_post)">Denegar</a>
+                    <a  class="btn btn-outline-success" (click) = "aceptar(p)">Aceptar</a>
+                    <a  class="btn btn-outline-danger" (click) = "denegar(p)">Denegar</a>
                     </div>
             </div>
         </div>   
@@ -27,9 +27,17 @@
     <h3>Soluciones Pendientes</h3>
     <button (click)="solucionesPendientes()">Soluciones</button>
     <div *ngIf="(soluciones_pendientes.length != 0)">
-        <div  *ngFor="let sc of soluciones_compradas">
-            <button class="btn btn-primary" [routerLink]="['/posts',sc.id_posts]">{{sc.id_posts}}</button>
+        <div  *ngFor="let sc of soluciones_pendientes" >
+            <br>
+            <button class="btn btn-primary" (click)="resIndividual(sc.id_post,sc.id_user_solucion)">Post con id: {{sc.id_post}} | Usuario con id : {{sc.id_user_solucion}}</button>
         </div>
     </div>
 
+    <h3>Ejercicios sin solucion Oficial</h3> <button (click)="sinOficial()"> Cargar</button>
+    <div *ngIf="(postSinSolucionOficial.length != 0)">
+        <div  *ngFor="let pso of postSinSolucionOficial">
+            <br>
+            <button class="btn btn-primary" [routerLink]="['/admin','post',pso.id_post]">Post con id: {{pso.id_post}}</button>
+        </div>
+    </div>
 </div>

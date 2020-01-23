@@ -19,6 +19,7 @@ import { EjerciciosComponent } from './components/ejercicios/ejercicios.componen
 import { PostEjercicioComponent } from './components/post-ejercicio/post-ejercicio.component';
 import { PendientesComponent } from './components/pendientes/pendientes.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
+import { AdminPostComponent } from './components/admin-post/admin-post.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ComprarComponent } from './components/comprar/comprar.component';
     PostEjercicioComponent,
     PendientesComponent,
     ComprarComponent,
+    AdminPostComponent,
   ],
   imports: [
     BrowserModule,

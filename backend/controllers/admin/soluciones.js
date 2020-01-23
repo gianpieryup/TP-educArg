@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const solucionModel = require('../../models/solucionesmodel');
 
 
@@ -7,8 +8,8 @@ router.put('/', async(req,res,next)=> {
     try {
         console.log("Entro al ADMIN solucioness.js -> al metodo put ");       
         let obj = {
-            estado = req.body.estado,
-            respuesta = req.body.respuesta
+            estado : req.body.estado,
+            respuesta : req.body.respuesta
         }
         //se identifica la clave compuesta por: id_user_solucion && id_post 
         console.log("Estado: ",obj);

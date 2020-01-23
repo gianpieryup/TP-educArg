@@ -10,6 +10,7 @@ import { EjerciciosComponent } from './components/ejercicios/ejercicios.componen
 import { PostEjercicioComponent } from './components/post-ejercicio/post-ejercicio.component';
 import { PendientesComponent } from './components/pendientes/pendientes.component';
 import { ComprarComponent } from './components/comprar/comprar.component';
+import { AdminPostComponent } from './components/admin-post/admin-post.component';
 
 
 
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path : 'upload', component : UploadComponent},
   {path : 'pendientes', component : PendientesComponent},
   {path : 'comprar', component : ComprarComponent},
+  {path : 'admin/post/:id', component : AdminPostComponent},
+  
  // {path : 'lazy', loadChildren : './components/lazy/lazy.module#LazyModule', canActivate : [AuthGuard]},  
   {path : '**', redirectTo : 'home'}
   

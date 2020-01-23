@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-01-2020 a las 02:06:36
+-- Tiempo de generación: 23-01-2020 a las 01:17:24
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -58,6 +58,14 @@ CREATE TABLE `posts` (
   `estado` smallint(6) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `posts`
+--
+
+INSERT INTO `posts` (`id_post`, `id_usuario`, `id_curso`, `enunciado_ejercicio`, `solucion`, `id_usuario_solucion`, `fecha_post`, `estado`) VALUES
+(1, 1, 1, '6840b59b8ca872d51bb6bb21afd32ce8.jpeg', '187ce043761e3c7d09caab70af00cf14.jpeg', 5, '2020-01-19 14:01:56', 1),
+(2, 1, 1, 'fc31dd6ebe15aa9a0fe9b3f8b213bd3f.jpeg', NULL, NULL, '2020-01-22 21:13:26', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -84,6 +92,14 @@ CREATE TABLE `soluciones_usuario` (
   `respuesta` varchar(200) DEFAULT 'Respuesta Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `soluciones_usuario`
+--
+
+INSERT INTO `soluciones_usuario` (`id_solucion`, `id_user_solucion`, `id_post`, `estado`, `respuesta`) VALUES
+('904811bd14e4a75c091ea7b70f56bdb9.jpeg', 1, 1, 0, 'Respuesta Pendiente'),
+('4a2c0ece244feb44455fbf6934cb9a7f.jpeg', 1, 2, 0, 'Respuesta Pendiente');
+
 -- --------------------------------------------------------
 
 --
@@ -107,7 +123,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `mail_usuario`, `permisos_usuario`, `password_usuario`, `cuenta_confirmada`, `telefono_usuario`, `salvavidas`, `codigo_mail_usuario`) VALUES
-(1, 'juancito', 'juacito@gmail.com', 0, '81dc9bdb52d04dc20036dbd8313ed055', 0, 1123953136, 4, 'd03d2d37-d34f-4fdb-9b59-e3d2d0a886bb');
+(1, 'juancito', 'juacito@gmail.com', 0, '81dc9bdb52d04dc20036dbd8313ed055', 0, 1123953136, 21, 'd03d2d37-d34f-4fdb-9b59-e3d2d0a886bb'),
+(2, 'admin', 'admin@gmail.com', 1, '81dc9bdb52d04dc20036dbd8313ed055', 0, 1123953136, 0, '8e754068-9669-4608-bd3e-9543f9f7bc1d');
 
 --
 -- Índices para tablas volcadas
@@ -135,12 +152,6 @@ ALTER TABLE `soluciones_compradas`
   ADD KEY `id_posts` (`id_posts`);
 
 --
--- Indices de la tabla `soluciones_usuario`
---
-ALTER TABLE `soluciones_usuario`
-  ADD UNIQUE KEY `id_user_solucion` (`id_user_solucion`,`id_post`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -160,13 +171,13 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

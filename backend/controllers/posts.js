@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const postModel = require('./../models/postModel');
 
 //Todos los post confirmados que accede cualquier usuario
@@ -29,6 +30,8 @@ router.get('/:id_post', async(req,res,next)=> {
         res.status(500).json({status : 'error'});
     }
 })
+
+
 
 /*
 Creo que lo tenia para Testear, luego de cerrado todo eliminar.

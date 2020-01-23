@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <h3>Vista individual del producto</h3>
+        <div class="ejercicio">
+        <img [src]="'http://localhost:3000/uploads/' + post.enunciado_ejercicio" class="post">
+
+        <div class="text-post">
+            <br>
+            <div class="info">Id del Post : {{id_post}}</div>
+            <div class="info">Autor : {{ post.nombre_usuario }}  /  ID del Autor : {{post.id_usuario}}</div>
+            <div class="info">Fecha Publicacion : {{post.fecha_post}}</div>
+        </div>
+        <div class="cargarSolucionn" >
+            <br><br>
+                <h3>Subir Solucion Oficial</h3>
+                <form enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="id_user" [(ngModel)]="id_user" placeholder="id del usuario de esta solucion">
+                    </div>
+                    <input type="file"  (change)="selectedSolucion($event)">
+                    
+                    <br><br>  <br>
+                    <div class="botom">
+                        <button type="button" (click)="subir()" class="btn btn-primary">Subir solucion</button>
+                    </div>
+                </form>
+        </div>
+        <br><br>
+</div>

@@ -52,17 +52,23 @@ respuesta [Por defecto: Revision Pendiente] ✔
 
 ### EL ADMIN
 ##### PENDIENTES >  posts Otro botom Soluciones Solo que le muestre la foto de la solucion y el id del post
-- Le debe mostrar pendientes osea los de estado 0 y los pendientes de las solucione: ❌
-- El admi debe poder modificar el post / en este caso modificar la solucion y/o el enunciado solamente: ❌
-- Ademas del estado/No se podra eliminar porque queda el registro para los usuarios que fueron rechazados: ❌
+- Le debe mostrar pendientes osea los de estado 0 y los pendientes de las solucione: ✔
+- El admi debe poder modificar el post / en este caso modificar la solucion y/o el enunciado solamente: ✔
+- Ademas del estado/No se podra eliminar porque queda el registro para los usuarios que fueron rechazados: ✔
 
 
 __________________________________________________________________________________________________
+## Algunos bugs 
+Pueden suceder por la `expiracion del JWT`  => Solucion desloguear y volver a  `loguearse`
 __________________________________________________________________________________________________
-
+### Visual Studio Code
 #### Localizar e ir a cualquier cosa de manera inmediata
 En Visual Studio Code:      `Ctrl + T`
 
+#### Comentarios
+Comentar : Seleccionar   +     `Ctrl + K + C`
+<br>
+Descomentar : Seleccionar   +     `Ctrl + K + U`
 
 
 #### Actualizar el .apib

@@ -28,7 +28,6 @@ export class PostsService extends BaseService {
   
   //------------  Admin  -----------------------------
   async getPostsPendientes() {
-    // /productos
     try {
       this.setEndPoint('admin/posts/pendientes');
       return this.get();
@@ -37,8 +36,7 @@ export class PostsService extends BaseService {
     }
   }
 
-  async actualizarEstadoPost(id_post,obj) {
-    // /productos
+  async updatePost(id_post,obj) {//update post
     try {
       this.setEndPoint('admin/posts/' + id_post);
       return this.put(obj);
@@ -47,4 +45,14 @@ export class PostsService extends BaseService {
     }
   }
 
+  //get post que no tengan solucion oficial osea ese campo NULL
+  async sinSolucionOficial() {
+    try {
+      this.setEndPoint('admin/posts/sinSolucionOficial');
+      return this.get();
+    } catch(error) {
+      throw error;
+    }
+  }
+  
 }

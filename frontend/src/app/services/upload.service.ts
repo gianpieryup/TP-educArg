@@ -27,4 +27,14 @@ export class UploadService extends BaseService {
       throw error;
     }
   }
+  async postSolucionOficial(obj) {
+    try {  
+      this.setEndPoint('upload/solucionOficial');
+      this.setCode(true);
+      // http://localhost:300/upload/solucionOficial
+      return this.post(obj);
+    } catch(error) {
+      throw error;
+    }
+  }
 }

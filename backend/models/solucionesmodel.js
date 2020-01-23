@@ -17,7 +17,7 @@ async function cargarSolucion(obj) {
 async function solucionesCompradas(id_user) {
     try{
         let query = "SELECT id_posts FROM soluciones_compradas WHERE id_usuario = ?";
-        const rows = await pool.query(query,id_use);
+        const rows = await pool.query(query,id_user);
         console.log(rows);
         
         return rows;
@@ -41,7 +41,7 @@ async function postsRespondidos(id_user) {
     }
 }
 
-//FUNCIONALIDADES solo del ADMIN
+//FUNCIONALIDADES solo del ADMIN --------------------------------------------------
 //Actualizar Solucion--------------------------------------------------------------
 async function updateSolucion(obj,user_solucion,post){
     try{
