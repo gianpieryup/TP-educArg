@@ -23,6 +23,7 @@ export class PostEjercicioComponent implements OnInit {
   presionosubirsolucion : boolean = false;
 
   solucionFile = null;
+  nombre : any;
 
   constructor(private postsService :PostsService, private activateRouter :ActivatedRoute ,private router :Router, private usuariosService : UsuariosService,private upload : UploadService) { }
 
@@ -59,7 +60,7 @@ export class PostEjercicioComponent implements OnInit {
             console.log(miCompra);
             
             if(miCompra.length > 0){//yo compre esta solucion
-              console.log("Yo compre esta solucion");
+              console.log("Yo compre esta solucion");         
               this.loCompre = true;//deshabilitar el botom de comprar solucion oficial
             }
           }
@@ -73,7 +74,7 @@ export class PostEjercicioComponent implements OnInit {
               console.log("Yo tengo una solucion a se ejercicio");
               this.miSolucion = miSolucion[0];
               console.log(this.miSolucion);
-              
+              this.nombre = localStorage.getItem('nombre');
               this.noloRespondi = false;
           }
           
