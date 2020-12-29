@@ -1,7 +1,6 @@
 # educArg
 Pagina Web creada para ver ejercicios, subir soluciones propias y comprar respuestas. Dependiendo del rol estos son
-
-
+Se uso Angular para el FrontEnd y NodeJS para el BackEnd
 
 Los User pueden subir ejercicios propuestos y soluciones a los ejercicios de la pagina 
 
