@@ -1,4 +1,67 @@
 # educArg
+Pagina Web creada para ver ejercicios, subir soluciones propias y comprar respuestas. Dependiendo del rol estos son
+
+
+
+Los User pueden subir ejercicios propuestos y soluciones a los ejercicios de la pagina 
+
+Los Admins pueden aceptar/denegar la subidad de estos ejercicios y dejar un comentario del porque
+
+
+
+
+
+### Deploy
+
+Primero tener XAMPP para emular el `host`
+
+En `http://localhost/phpmyadmin` importar la BD llamada `tpelearning.sql` ubicada en esta misma carpeta
+
+
+
+### Dependencias
+
+Primero las dependencias del `backend`
+
+> npm i
+
+Luego en la consola
+
+> nodemon npm start
+
+
+__________________________________________________________________________________________________
+
+
+Análogo para las dependencias del `FrontEnd`
+
+En su consola
+
+> ng serve
+
+
+
+Y luego en el navegador
+
+> http://localhost:4200/home
+
+
+__________________________________________________________________________________________________
+
+### Usuarios
+
+- username: juacito@gmail.com
+- pass: 1234
+
+
+
+- username: admin@gmail.com
+- pass: 1234
+
+__________________________________________________________________________________________________
+
+
+
 ##  Funcionalidades
 
 - **Loguearse**  ✔
@@ -43,13 +106,6 @@ respuesta [Por defecto: Revision Pendiente] ✔
 - Le debe mostrar los Post pendientes osea los de estado 0 y los pendientes de las solucion: ✔
 - El admi debe poder y ser el unico que pueda cargar la solucion oficial del post ✔
 - Ademas del estado/No se podra eliminar porque queda el registro para los usuarios que fueron rechazado sus post y/o soluciones: ✔
-
-
-### Usuarios
-- username: juacito@gmail.com
-- pass: 1234
-- username: admin@gmail.com
-- pass: 1234
 
 
 __________________________________________________________________________________________________
